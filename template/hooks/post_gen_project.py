@@ -32,21 +32,41 @@ if not generate_env:
 # Run ruff to auto-fix import sorting and other linting issues
 backend_dir = os.path.join(os.getcwd(), "backend")
 if os.path.exists(backend_dir):
-    try:
-        # First run ruff check --fix to auto-fix issues
-        subprocess.run(
-            [sys.executable, "-m", "ruff", "check", "--fix", "--quiet", backend_dir],
-            capture_output=True,
-            check=False,
-        )
-        # Then run ruff format for consistent formatting
-        subprocess.run(
-            [sys.executable, "-m", "ruff", "format", "--quiet", backend_dir],
-            capture_output=True,
-            check=False,
-        )
-    except FileNotFoundError:
-        # ruff not installed, skip
-        pass
+    # Try multiple methods to find ruff
+    ruff_commands = [
+        ["ruff"],  # ruff in PATH
+        ["uv", "run", "ruff"],  # via uv
+        [sys.executable, "-m", "ruff"],  # via current Python
+    ]
+
+    ruff_cmd = None
+    for cmd in ruff_commands:
+        try:
+            result = subprocess.run(
+                cmd + ["--version"],
+                capture_output=True,
+                check=True,
+            )
+            ruff_cmd = cmd
+            break
+        except (FileNotFoundError, subprocess.CalledProcessError):
+            continue
+
+    if ruff_cmd:
+        try:
+            # First run ruff check --fix to auto-fix issues
+            subprocess.run(
+                ruff_cmd + ["check", "--fix", "--quiet", backend_dir],
+                capture_output=True,
+                check=False,
+            )
+            # Then run ruff format for consistent formatting
+            subprocess.run(
+                ruff_cmd + ["format", "--quiet", backend_dir],
+                capture_output=True,
+                check=False,
+            )
+        except Exception:
+            pass
 
 print("Project generated successfully!")
