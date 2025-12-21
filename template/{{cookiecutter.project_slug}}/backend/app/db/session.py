@@ -103,6 +103,11 @@ def get_db_session() -> Generator[Session, None, None]:
         db.close()
 
 
+def close_db() -> None:
+    """Close database connection."""
+    engine.dispose()
+
+
 {%- else %}
 """No database configured."""
 
