@@ -98,32 +98,94 @@ This template gives you all of that out of the box, with **20+ configurable inte
   <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/app_start.gif" alt="FastAPI Fullstack Generator Demo">
 </p>
 
-### Screenshots
+---
 
-#### Chat Interface
-<p align="center">
-  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/new_chat_light.png" alt="Chat Interface - Light Mode"><br><br>
-  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/new_chat_dark.png" alt="Chat Interface - Dark Mode">
-</p>
+## 🚀 Quick Start
 
-#### Authentication
-<p align="center">
-  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/new_register.png" alt="Register Page with OAuth">
-  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/new_login.png" alt="Login Page with OAuth"><br><br>
-</p>
+### Installation
 
-#### Observability & Monitoring
-<p align="center">
-  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/logfire.png" alt="Logfire Observability Dashboard"><br><br>
-  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/langsmith.png" alt="LangSmith Tracing Dashboard"><br><br>
-  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/flower.png" alt="Celery Flower Task Monitoring">
-</p>
+```bash
+# pip
+pip install fastapi-fullstack
 
-#### Admin & API
-<p align="center">
-  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/admin.png" alt="SQLAdmin Panel"><br><br>
-  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/docs_2.png" alt="API Documentation">
-</p>
+# uv (recommended)
+uv tool install fastapi-fullstack
+
+# pipx
+pipx install fastapi-fullstack
+```
+
+### Create Your Project
+
+```bash
+# Interactive wizard (recommended)
+fastapi-fullstack new
+
+# Quick mode with options
+fastapi-fullstack create my_ai_app \
+  --database postgresql \
+  --auth jwt \
+  --frontend nextjs
+```
+
+### Start Development
+
+```bash
+cd my_ai_app
+
+# Backend
+cd backend
+uv sync
+cp .env.example .env
+alembic upgrade head
+
+# Create admin user
+uv run my_ai_app user create --email admin@example.com --password secret123 --superuser
+
+# Start server
+uv run uvicorn app.main:app --reload
+
+# Frontend (new terminal)
+cd frontend
+bun install
+bun dev
+```
+
+> **Note:** The admin user is required to access the SQLAdmin panel at `/admin`. Use the `--superuser` flag to grant full admin privileges.
+
+**Access:**
+- API: http://localhost:8000
+- Docs: http://localhost:8000/docs
+- Admin Panel: http://localhost:8000/admin
+- Frontend: http://localhost:3000
+
+---
+
+## 📸 Screenshots
+
+### Chat Interface
+| Light Mode | Dark Mode |
+|:---:|:---:|
+| ![Chat Light](https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/new_chat_light.png) | ![Chat Dark](https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/new_chat_dark.png) |
+
+### Authentication
+| Register | Login |
+|:---:|:---:|
+| ![Register](https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/new_register.png) | ![Login](https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/new_login.png) |
+
+### Observability
+| Logfire (PydanticAI) | LangSmith (LangChain) |
+|:---:|:---:|
+| ![Logfire](https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/logfire.png) | ![LangSmith](https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/langsmith.png) |
+
+### Admin, Monitoring & API
+| Celery Flower | SQLAdmin Panel |
+|:---:|:---:|
+| ![Flower](https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/flower.png) | ![Admin](https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/admin.png) |
+
+| API Documentation |
+|:---:|
+| ![API Docs](https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/docs_2.png) |
 
 ---
 
@@ -188,67 +250,6 @@ graph LR
 | **Repositories** | Data access, queries |
 
 See [Architecture Documentation](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/architecture.md) for details.
-
----
-
-## 🚀 Quick Start
-
-### Installation
-
-```bash
-# pip
-pip install fastapi-fullstack
-
-# uv (recommended)
-uv tool install fastapi-fullstack
-
-# pipx
-pipx install fastapi-fullstack
-```
-
-### Create Your Project
-
-```bash
-# Interactive wizard (recommended)
-fastapi-fullstack new
-
-# Quick mode with options
-fastapi-fullstack create my_ai_app \
-  --database postgresql \
-  --auth jwt \
-  --frontend nextjs
-```
-
-### Start Development
-
-```bash
-cd my_ai_app
-
-# Backend
-cd backend
-uv sync
-cp .env.example .env
-alembic upgrade head
-
-# Create admin user
-uv run my_ai_app user create --email admin@example.com --password secret123 --superuser
-
-# Start server
-uv run uvicorn app.main:app --reload
-
-# Frontend (new terminal)
-cd frontend
-bun install
-bun dev
-```
-
-> **Note:** The admin user is required to access the SQLAdmin panel at `/admin`. Use the `--superuser` flag to grant full admin privileges.
-
-**Access:**
-- API: http://localhost:8000
-- Docs: http://localhost:8000/docs
-- Admin Panel: http://localhost:8000/admin
-- Frontend: http://localhost:3000
 
 ---
 
