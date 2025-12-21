@@ -1,9 +1,21 @@
 """Configuration models for project generation."""
 
+from datetime import UTC, datetime
 from enum import Enum
+from importlib.metadata import version
 from typing import Any
 
 from pydantic import BaseModel, Field, computed_field, model_validator
+
+GENERATOR_NAME = "fastapi-fullstack"
+
+
+def get_generator_version() -> str:
+    """Get the current generator version from package metadata."""
+    try:
+        return version(GENERATOR_NAME)
+    except Exception:
+        return "0.0.0"
 
 
 class DatabaseType(str, Enum):
@@ -196,6 +208,11 @@ class ProjectConfig(BaseModel):
     def to_cookiecutter_context(self) -> dict[str, Any]:
         """Convert config to cookiecutter context."""
         return {
+            # Generator metadata
+            "generator_name": GENERATOR_NAME,
+            "generator_version": get_generator_version(),
+            "generated_at": datetime.now(UTC).isoformat(),
+            # Project info
             "project_name": self.project_name,
             "project_slug": self.project_slug,
             "project_description": self.project_description,
