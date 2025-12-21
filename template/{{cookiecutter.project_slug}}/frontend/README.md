@@ -1,693 +1,545 @@
-# {{ cookiecutter.project_name }} - Frontend
+# Full-Stack FastAPI + Next.js Template for AI/LLM Applications
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Next.js-15-black?logo=next.js&logoColor=white" alt="Next.js">
-  <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" alt="React">
-  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind">
-  <img src="https://img.shields.io/badge/Bun-latest-F9F1E1?logo=bun&logoColor=black" alt="Bun">
+  <a href="https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/stargazers"><img src="https://img.shields.io/github/stars/vstorm-co/full-stack-fastapi-nextjs-llm-template?style=flat&logo=github&color=yellow" alt="GitHub Stars"></a>
+  <a href="https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/LICENSE"><img src="https://img.shields.io/github/license/vstorm-co/full-stack-fastapi-nextjs-llm-template?color=blue" alt="License"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue?logo=python&logoColor=white" alt="Python"></a>
+  <a href="https://pypi.org/project/fastapi-fullstack/"><img src="https://img.shields.io/pypi/v/fastapi-fullstack?color=green&logo=pypi&logoColor=white" alt="PyPI"></a>
+  <img src="https://img.shields.io/badge/coverage-100%25-brightgreen" alt="Coverage">
+  <img src="https://img.shields.io/badge/integrations-20%2B-brightgreen" alt="20+ Integrations">
 </p>
 
 <p align="center">
-  Next.js 15 frontend for <b>{{ cookiecutter.project_name }}</b>
+  <b>Production-ready project generator for AI/LLM applications with 20+ enterprise integrations.</b><br>
+  <sub>Built with FastAPI, Next.js 15, PydanticAI, and everything you need for professional business applications.</sub>
+</p>
+
+<p align="center">
+  <a href="#-why-this-template">Why This Template</a> •
+  <a href="#-features">Features</a> •
+  <a href="#-demo">Demo</a> •
+  <a href="#-quick-start">Quick Start</a> •
+  <a href="#-architecture">Architecture</a> •
+  <a href="#-ai-agent">AI Agent</a> •
+  <a href="#-observability-with-logfire">Logfire</a> •
+  <a href="#-documentation">Documentation</a>
+</p>
+
+## Related Projects
+
+> **Building advanced AI agents?** Check out [pydantic-deep](https://github.com/vstorm-co/pydantic-deepagents) - a deep agent framework built on pydantic-ai with planning, filesystem, and subagent capabilities.
+
+---
+
+## 🎯 Why This Template
+
+Building AI/LLM applications requires more than just an API wrapper. You need:
+
+- **Type-safe AI agents** with tool/function calling
+- **Real-time streaming** responses via WebSocket
+- **Conversation persistence** and history management
+- **Production infrastructure** - auth, rate limiting, observability
+- **Enterprise integrations** - background tasks, webhooks, admin panels
+
+This template gives you all of that out of the box, with **20+ configurable integrations** so you can focus on building your AI product, not boilerplate.
+
+### Perfect For
+
+- 🤖 **AI Chatbots & Assistants** - PydanticAI agents with streaming responses
+- 📊 **ML Applications** - Background task processing with Celery/Taskiq
+- 🏢 **Enterprise SaaS** - Full auth, admin panel, webhooks, and more
+- 🚀 **Startups** - Ship fast with production-ready infrastructure
+
+---
+
+## ✨ Features
+
+### 🤖 AI/LLM First
+
+- **[PydanticAI](https://ai.pydantic.dev)** - Type-safe AI agents with tool support
+- **WebSocket Streaming** - Real-time responses using `iter()` method
+- **Conversation Persistence** - Save chat history to database
+- **Custom Tools** - Easily extend agent capabilities
+- **Multi-model Support** - OpenAI, Anthropic, and more
+
+### ⚡ Backend (FastAPI)
+
+- **[FastAPI](https://fastapi.tiangolo.com)** + **[Pydantic v2](https://docs.pydantic.dev)** - High-performance async API
+- **Multiple Databases** - PostgreSQL (async), MongoDB (async), SQLite
+- **Authentication** - JWT + Refresh tokens, API Keys, OAuth2 (Google)
+- **Background Tasks** - Celery, Taskiq, or ARQ
+- **Django-style CLI** - Custom management commands with auto-discovery
+
+### 🎨 Frontend (Next.js 15)
+
+- **React 19** + **TypeScript** + **Tailwind CSS v4**
+- **AI Chat Interface** - WebSocket streaming, tool call visualization
+- **Authentication** - HTTP-only cookies, auto-refresh
+- **Dark Mode** + **i18n** (optional)
+
+### 🔌 20+ Enterprise Integrations
+
+| Category | Integrations |
+|----------|-------------|
+| **Caching & State** | Redis, fastapi-cache2 |
+| **Security** | Rate limiting, CORS, CSRF protection |
+| **Observability** | Logfire, Sentry, Prometheus |
+| **Admin** | SQLAdmin panel with auth |
+| **Events** | Webhooks, WebSockets |
+| **DevOps** | Docker, GitHub Actions, GitLab CI, Kubernetes |
+
+---
+
+## 🎬 Demo
+
+<p align="center">
+  <img src="assets/app_start.gif" alt="FastAPI Fullstack Generator Demo">
+</p>
+
+### Screenshots
+
+<p align="center">
+  <img src="assets/docs_2.png" alt="API Documentation"><br><br>
+  <img src="assets/admin.png" alt="Admin Panel"><br><br>
+  <img src="assets/chat_view_light.png" alt="Chat Interface - Light Mode"><br><br>
+  <img src="assets/chat_view_dark.png" alt="Chat Interface - Dark Mode"><br><br>
+  <img src="assets/login.png" alt="Login Page"><br><br>
+  <img src="assets/register.png" alt="Register Page">
 </p>
 
 ---
 
-## Tech Stack
+## 🏗️ Architecture
 
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| [Next.js](https://nextjs.org) | 15.x | React framework with App Router |
-| [React](https://react.dev) | 19.x | UI library with Server Components |
-| [TypeScript](https://www.typescriptlang.org) | 5.x | Type safety |
-| [Tailwind CSS](https://tailwindcss.com) | 4.x | Utility-first styling |
-| [Zustand](https://zustand-demo.pmnd.rs) | 5.x | State management |
-| [TanStack Query](https://tanstack.com/query) | 5.x | Server state & data fetching |
-| [Bun](https://bun.sh) | Latest | Package manager & runtime |
+```mermaid
+graph TB
+    subgraph Frontend["Frontend (Next.js 15)"]
+        UI[React Components]
+        WS[WebSocket Client]
+        Store[Zustand Stores]
+    end
+
+    subgraph Backend["Backend (FastAPI)"]
+        API[API Routes]
+        Services[Services Layer]
+        Repos[Repositories]
+        Agent[PydanticAI Agent]
+    end
+
+    subgraph Infrastructure
+        DB[(PostgreSQL/MongoDB)]
+        Redis[(Redis)]
+        Queue[Celery/Taskiq]
+    end
+
+    subgraph External
+        LLM[OpenAI/Anthropic]
+        Webhook[Webhook Endpoints]
+    end
+
+    UI --> API
+    WS <--> Agent
+    API --> Services
+    Services --> Repos
+    Services --> Agent
+    Repos --> DB
+    Agent --> LLM
+    Services --> Redis
+    Services --> Queue
+    Services --> Webhook
+```
+
+### Layered Architecture
+
+The backend follows a clean **Repository + Service** pattern:
+
+```mermaid
+graph LR
+    A[API Routes] --> B[Services]
+    B --> C[Repositories]
+    C --> D[(Database)]
+
+    B --> E[External APIs]
+    B --> F[AI Agents]
+```
+
+| Layer | Responsibility |
+|-------|---------------|
+| **Routes** | HTTP handling, validation, auth |
+| **Services** | Business logic, orchestration |
+| **Repositories** | Data access, queries |
+
+See [Architecture Documentation](./docs/architecture.md) for details.
 
 ---
 
-## Quick Start
-
-### Prerequisites
-
-- [Bun](https://bun.sh) installed (`curl -fsSL https://bun.sh/install | bash`)
+## 🚀 Quick Start
 
 ### Installation
 
 ```bash
-# Install dependencies
-bun install
+# pip
+pip install fastapi-fullstack
 
-# Copy environment file
-cp .env.example .env.local
+# uv (recommended)
+uv tool install fastapi-fullstack
+
+# pipx
+pipx install fastapi-fullstack
 ```
 
-### Development
+### Create Your Project
 
 ```bash
+# Interactive wizard (recommended)
+fastapi-fullstack new
+
+# Quick mode with options
+fastapi-fullstack create my_ai_app \
+  --database postgresql \
+  --auth jwt \
+  --frontend nextjs
+```
+
+### Start Development
+
+```bash
+cd my_ai_app
+
+# Backend
+cd backend
+uv sync
+cp .env.example .env
+alembic upgrade head
+
+# Create admin user
+uv run my_ai_app user create --email admin@example.com --password secret123 --superuser
+
+# Start server
+uv run uvicorn app.main:app --reload
+
+# Frontend (new terminal)
+cd frontend
+bun install
 bun dev
 ```
 
-Open [http://localhost:{{ cookiecutter.frontend_port }}](http://localhost:{{ cookiecutter.frontend_port }}) in your browser.
+> **Note:** The admin user is required to access the SQLAdmin panel at `/admin`. Use the `--superuser` flag to grant full admin privileges.
 
-### Build & Production
-
-```bash
-# Build for production
-bun build
-
-# Start production server
-bun start
-```
+**Access:**
+- API: http://localhost:8000
+- Docs: http://localhost:8000/docs
+- Admin Panel: http://localhost:8000/admin
+- Frontend: http://localhost:3000
 
 ---
 
-## Project Structure
+## 🤖 AI Agent
 
+### PydanticAI Integration
+
+The template includes a fully configured AI agent with:
+
+```python
+# app/agents/assistant.py
+from pydantic_ai import Agent, RunContext
+
+@dataclass
+class Deps:
+    user_id: str | None = None
+    db: AsyncSession | None = None
+
+agent = Agent[Deps, str](
+    model="openai:gpt-4o-mini",
+    system_prompt="You are a helpful assistant.",
+)
+
+@agent.tool
+async def search_database(ctx: RunContext[Deps], query: str) -> list[dict]:
+    """Search the database for relevant information."""
+    # Access user context and database via ctx.deps
+    ...
 ```
-frontend/
-├── src/
-│   ├── app/                      # Next.js App Router
-│   │   ├── layout.tsx            # Root layout
-│   │   ├── page.tsx              # Home page
-│   │   ├── providers.tsx         # Client providers (React Query, etc.)
-│   │   ├── (auth)/               # Auth route group (public)
-│   │   │   ├── layout.tsx
-│   │   │   ├── login/page.tsx
-│   │   │   └── register/page.tsx
-│   │   ├── (dashboard)/          # Dashboard route group (protected)
-│   │   │   ├── layout.tsx
-│   │   │   ├── dashboard/page.tsx
-{%- if cookiecutter.enable_ai_agent %}
-│   │   │   ├── chat/page.tsx
-{%- endif %}
-│   │   │   └── profile/page.tsx
-│   │   └── api/                  # API routes (BFF proxy)
-│   │       ├── auth/
-│   │       │   ├── login/route.ts
-│   │       │   ├── logout/route.ts
-│   │       │   ├── register/route.ts
-│   │       │   ├── refresh/route.ts
-│   │       │   └── me/route.ts
-{%- if cookiecutter.enable_conversation_persistence %}
-│   │       └── conversations/
-│   │           └── route.ts
-{%- endif %}
-│   │
-│   ├── components/
-│   │   ├── ui/                   # Base UI components
-│   │   │   ├── button.tsx
-│   │   │   ├── input.tsx
-│   │   │   ├── card.tsx
-│   │   │   ├── badge.tsx
-│   │   │   └── label.tsx
-│   │   ├── layout/               # Layout components
-│   │   │   ├── header.tsx
-│   │   │   └── sidebar.tsx
-│   │   ├── auth/                 # Auth components
-│   │   │   ├── login-form.tsx
-│   │   │   └── register-form.tsx
-{%- if cookiecutter.enable_ai_agent %}
-│   │   ├── chat/                 # Chat components
-│   │   │   ├── chat-container.tsx
-│   │   │   ├── chat-input.tsx
-│   │   │   ├── message-list.tsx
-│   │   │   ├── message-item.tsx
-│   │   │   └── tool-call-card.tsx
-{%- endif %}
-│   │   └── theme/                # Theme components
-│   │       ├── theme-provider.tsx
-│   │       └── theme-toggle.tsx
-│   │
-│   ├── hooks/                    # Custom React hooks
-│   │   ├── use-auth.ts           # Authentication hook
-{%- if cookiecutter.enable_ai_agent %}
-│   │   ├── use-websocket.ts      # WebSocket connection
-│   │   ├── use-chat.ts           # Chat functionality
-{%- endif %}
-{%- if cookiecutter.enable_conversation_persistence %}
-│   │   └── use-conversations.ts  # Conversation management
-{%- endif %}
-│   │
-│   ├── stores/                   # Zustand state stores
-│   │   ├── auth-store.ts         # Auth state
-│   │   ├── theme-store.ts        # Theme state
-{%- if cookiecutter.enable_ai_agent %}
-│   │   └── chat-store.ts         # Chat messages state
-{%- endif %}
-│   │
-│   ├── lib/                      # Utilities
-│   │   ├── api-client.ts         # Fetch wrapper
-│   │   ├── server-api.ts         # Server-side API calls
-│   │   ├── utils.ts              # Helper functions (cn, etc.)
-│   │   └── constants.ts          # App constants
-│   │
-│   ├── types/                    # TypeScript types
-│   │   ├── api.ts
-│   │   ├── auth.ts
-{%- if cookiecutter.enable_ai_agent %}
-│   │   └── chat.ts
-{%- endif %}
-│   │
-│   └── middleware.ts             # Auth middleware
-│
-├── e2e/                          # Playwright E2E tests
-│   ├── auth.setup.ts
-│   ├── auth.spec.ts
-│   ├── home.spec.ts
-{%- if cookiecutter.enable_ai_agent %}
-│   └── chat.spec.ts
-{%- endif %}
-│
-{%- if cookiecutter.enable_i18n %}
-├── messages/                     # i18n translations
-│   ├── en.json
-│   └── pl.json
-{%- endif %}
-│
-├── public/                       # Static assets
-├── .env.example                  # Environment template
-├── next.config.ts
-├── tailwind.config.ts
-├── tsconfig.json
-├── playwright.config.ts
-├── vitest.config.ts
-└── package.json
+
+### WebSocket Streaming
+
+Real-time responses with full event access:
+
+```python
+@router.websocket("/ws")
+async def agent_ws(websocket: WebSocket):
+    await websocket.accept()
+
+    async for event in agent.iter(user_input, deps=deps):
+        if isinstance(event, PartDeltaEvent):
+            await websocket.send_json({
+                "type": "token",
+                "content": event.delta.content
+            })
 ```
+
+### Adding Custom Tools
+
+```python
+@agent.tool
+async def get_weather(ctx: RunContext[Deps], city: str) -> dict:
+    """Get current weather for a city."""
+    async with httpx.AsyncClient() as client:
+        response = await client.get(f"https://api.weather.com/{city}")
+        return response.json()
+```
+
+See [AI Agent Documentation](./docs/ai-agent.md) for more.
 
 ---
 
-## Available Scripts
+## 📊 Observability with Logfire
 
-| Command | Description |
-|---------|-------------|
-| `bun dev` | Start development server (port {{ cookiecutter.frontend_port }}) |
-| `bun build` | Build for production |
-| `bun start` | Start production server |
-| `bun lint` | Run ESLint |
-| `bun lint:fix` | Fix ESLint issues |
-| `bun format` | Format with Prettier |
-| `bun type-check` | Run TypeScript type checking |
-| `bun test` | Run unit tests (Vitest) |
-| `bun test:run` | Run tests once (CI mode) |
-| `bun test:coverage` | Run tests with coverage |
-| `bun test:e2e` | Run E2E tests (Playwright) |
-| `bun test:e2e:ui` | Run E2E tests with UI |
-| `bun test:e2e:headed` | Run E2E tests in browser |
+[Logfire](https://logfire.pydantic.dev) provides complete observability for your application - from AI agents to database queries. Built by the Pydantic team, it offers first-class support for the entire Python ecosystem.
 
----
+### What Gets Instrumented
 
-## Environment Variables
+```mermaid
+graph LR
+    subgraph Your App
+        API[FastAPI]
+        Agent[PydanticAI]
+        DB[(Database)]
+        Cache[(Redis)]
+        Queue[Celery/Taskiq]
+        HTTP[HTTPX]
+    end
 
-Create `.env.local` from `.env.example`:
+    subgraph Logfire
+        Traces[Traces]
+        Metrics[Metrics]
+        Logs[Logs]
+    end
 
-```bash
-# Backend API URL (server-side only)
-BACKEND_URL=http://localhost:{{ cookiecutter.backend_port }}
-
-# WebSocket URL (client-side)
-NEXT_PUBLIC_WS_URL=ws://localhost:{{ cookiecutter.backend_port }}/api/v1/agent/ws
-{%- if cookiecutter.enable_logfire %}
-
-# OpenTelemetry (Logfire)
-OTEL_EXPORTER_OTLP_ENDPOINT=https://logfire-api.pydantic.dev
-OTEL_EXPORTER_OTLP_HEADERS=Authorization=your-write-token
-{%- endif %}
+    API --> Traces
+    Agent --> Traces
+    DB --> Traces
+    Cache --> Traces
+    Queue --> Traces
+    HTTP --> Traces
 ```
 
----
-
-## Authentication
-
-### How It Works
-
-1. **Login** - User submits credentials to `/api/auth/login`
-2. **BFF Proxy** - Next.js API route calls backend, receives JWT tokens
-3. **Cookies** - Tokens stored in HTTP-only cookies (secure)
-4. **Auto-refresh** - Tokens refreshed automatically before expiry
-5. **Middleware** - Protected routes check auth via middleware
-
-### Auth Store (Zustand)
-
-```typescript
-// src/stores/auth-store.ts
-import { useAuthStore } from '@/stores/auth-store';
-
-// In components
-const { user, isAuthenticated, logout } = useAuthStore();
-```
-
-### Auth Hook
-
-```typescript
-// src/hooks/use-auth.ts
-import { useAuth } from '@/hooks/use-auth';
-
-function MyComponent() {
-  const { user, isLoading, login, logout } = useAuth();
-
-  // ...
-}
-```
-
-### Protected Routes
-
-Middleware automatically redirects unauthenticated users:
-
-```typescript
-// src/middleware.ts
-const protectedPaths = ['/dashboard', '/chat', '/profile'];
-```
-
----
-{%- if cookiecutter.enable_ai_agent %}
-
-## AI Chat
-
-### WebSocket Connection
-
-The chat uses WebSocket for real-time streaming:
-
-```typescript
-// src/hooks/use-chat.ts
-import { useChat } from '@/hooks/use-chat';
-
-function ChatPage() {
-  const { messages, isConnected, isStreaming, sendMessage } = useChat();
-
-  return (
-    <div>
-      <MessageList messages={messages} />
-      <ChatInput onSend={sendMessage} disabled={isStreaming} />
-    </div>
-  );
-}
-```
-
-### Message Types
-
-```typescript
-interface Message {
-  id: string;
-  role: 'user' | 'assistant' | 'tool';
-  content: string;
-  tool_name?: string;
-  created_at: Date;
-}
-
-interface StreamEvent {
-  type: 'start' | 'token' | 'tool_call' | 'end' | 'error';
-  content?: string;
-  tool?: { name: string; args: Record<string, unknown> };
-}
-```
-
-### Components
-
-| Component | Description |
+| Component | What You See |
 |-----------|-------------|
-| `ChatContainer` | Main chat wrapper with WebSocket |
-| `ChatInput` | Message input with send button |
-| `MessageList` | Scrollable message container |
-| `MessageItem` | Single message bubble |
-| `ToolCallCard` | Tool invocation display |
-
----
-{%- endif %}
-
-## UI Components
-
-Pre-built components following shadcn/ui patterns:
-
-### Button
-
-```tsx
-import { Button } from '@/components/ui/button';
-
-<Button variant="default">Click me</Button>
-<Button variant="destructive">Delete</Button>
-<Button variant="outline">Cancel</Button>
-<Button variant="ghost">Ghost</Button>
-<Button size="sm">Small</Button>
-<Button size="lg">Large</Button>
-```
-
-### Input
-
-```tsx
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-
-<div>
-  <Label htmlFor="email">Email</Label>
-  <Input id="email" type="email" placeholder="you@example.com" />
-</div>
-```
-
-### Card
-
-```tsx
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-
-<Card>
-  <CardHeader>
-    <CardTitle>Title</CardTitle>
-  </CardHeader>
-  <CardContent>
-    Content here...
-  </CardContent>
-</Card>
-```
-
----
-
-## State Management
-
-### Zustand Stores
-
-```typescript
-// Creating a store
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-
-interface CounterState {
-  count: number;
-  increment: () => void;
-  decrement: () => void;
-}
-
-export const useCounterStore = create<CounterState>()(
-  persist(
-    (set) => ({
-      count: 0,
-      increment: () => set((state) => ({ count: state.count + 1 })),
-      decrement: () => set((state) => ({ count: state.count - 1 })),
-    }),
-    { name: 'counter-storage' }
-  )
-);
-```
-
-### Available Stores
-
-| Store | Purpose |
-|-------|---------|
-| `auth-store` | User authentication state |
-| `theme-store` | Dark/light mode preference |
-{%- if cookiecutter.enable_ai_agent %}
-| `chat-store` | Chat messages and state |
-{%- endif %}
-{%- if cookiecutter.enable_conversation_persistence %}
-| `conversation-store` | Conversation list and selection |
-{%- endif %}
-
----
-
-## Dark Mode
-
-Theme switching with system preference detection:
-
-```tsx
-import { useThemeStore } from '@/stores/theme-store';
-import { ThemeToggle } from '@/components/theme/theme-toggle';
-
-// Toggle component
-<ThemeToggle />
-
-// Manual control
-const { theme, setTheme } = useThemeStore();
-setTheme('dark');  // 'light' | 'dark' | 'system'
-```
-
----
-{%- if cookiecutter.enable_logfire %}
-
-## Logfire Observability
-
-[Logfire](https://logfire.pydantic.dev) provides frontend observability through OpenTelemetry instrumentation.
-
-### What Gets Traced
-
-- **Page navigations** - Route changes and load times
-- **API calls** - Fetch requests to backend
-- **Web Vitals** - Core Web Vitals metrics (LCP, FID, CLS)
-- **Errors** - Client-side exceptions
+| **PydanticAI** | Agent runs, tool calls, LLM requests, token usage, streaming events |
+| **FastAPI** | Request/response traces, latency, status codes, route performance |
+| **PostgreSQL/MongoDB** | Query execution time, slow queries, connection pool stats |
+| **Redis** | Cache hits/misses, command latency, key patterns |
+| **Celery/Taskiq** | Task execution, queue depth, worker performance |
+| **HTTPX** | External API calls, response times, error rates |
 
 ### Configuration
 
-Set environment variables in `.env.local`:
+Enable Logfire and select which components to instrument:
 
 ```bash
-OTEL_EXPORTER_OTLP_ENDPOINT=https://logfire-api.pydantic.dev
-OTEL_EXPORTER_OTLP_HEADERS=Authorization=your-write-token
+fastapi-fullstack new
+# ✓ Enable Logfire observability
+#   ✓ Instrument FastAPI
+#   ✓ Instrument Database
+#   ✓ Instrument Redis
+#   ✓ Instrument Celery
+#   ✓ Instrument HTTPX
 ```
 
-### Manual Instrumentation
+### Usage
 
-```typescript
-import { trace } from '@opentelemetry/api';
+```python
+# Automatic instrumentation in app/main.py
+import logfire
 
-const tracer = trace.getTracer('frontend');
-
-async function processCheckout(order: Order) {
-  const span = tracer.startSpan('checkout.process');
-  try {
-    span.setAttribute('order.id', order.id);
-    await submitOrder(order);
-    span.setStatus({ code: SpanStatusCode.OK });
-  } catch (error) {
-    span.setStatus({ code: SpanStatusCode.ERROR });
-    throw error;
-  } finally {
-    span.end();
-  }
-}
+logfire.configure()
+logfire.instrument_fastapi(app)
+logfire.instrument_asyncpg()
+logfire.instrument_redis()
+logfire.instrument_httpx()
 ```
 
-> 📚 For more details, see [Logfire Browser Integration](https://logfire.pydantic.dev/docs/integrations/browser/).
-{%- endif %}
+```python
+# Manual spans for custom logic
+with logfire.span("process_order", order_id=order.id):
+    await validate_order(order)
+    await charge_payment(order)
+    await send_confirmation(order)
+```
+
+For more details, see [Logfire Documentation](https://logfire.pydantic.dev/docs/integrations/).
 
 ---
-{%- if cookiecutter.enable_i18n %}
 
-## Internationalization (i18n)
+## 🛠️ Django-style CLI
 
-Using `next-intl` for translations:
+Each generated project includes a powerful CLI inspired by Django's management commands:
 
-### Translation Files
-
-```json
-// messages/en.json
-{
-  "common": {
-    "login": "Login",
-    "logout": "Logout"
-  },
-  "auth": {
-    "email": "Email",
-    "password": "Password"
-  }
-}
-```
-
-### Usage in Components
-
-```tsx
-import { useTranslations } from 'next-intl';
-
-function LoginForm() {
-  const t = useTranslations('auth');
-
-  return (
-    <form>
-      <Label>{t('email')}</Label>
-      <Input name="email" />
-    </form>
-  );
-}
-```
-
-### Language Switcher
-
-```tsx
-import { LanguageSwitcher } from '@/components/language-switcher';
-
-<LanguageSwitcher />
-```
-
----
-{%- endif %}
-
-## Testing
-
-### Unit Tests (Vitest)
+### Built-in Commands
 
 ```bash
-# Run tests
-bun test
+# Server
+my_app server run --reload
+my_app server routes
 
-# Watch mode
-bun test --watch
+# Database (Alembic wrapper)
+my_app db init
+my_app db migrate -m "Add users"
+my_app db upgrade
 
-# With coverage
-bun test:coverage
-
-# UI mode
-bun test:ui
+# Users
+my_app user create --email admin@example.com --superuser
+my_app user list
 ```
 
-Example test:
+### Custom Commands
 
-```typescript
-// src/lib/utils.test.ts
-import { describe, it, expect } from 'vitest';
-import { cn } from './utils';
+Create your own commands with auto-discovery:
 
-describe('cn utility', () => {
-  it('merges class names', () => {
-    expect(cn('foo', 'bar')).toBe('foo bar');
-  });
-});
+```python
+# app/commands/seed.py
+from app.commands import command, success, error
+import click
+
+@command("seed", help="Seed database with test data")
+@click.option("--count", "-c", default=10, type=int)
+@click.option("--dry-run", is_flag=True)
+def seed_database(count: int, dry_run: bool):
+    """Seed the database with sample data."""
+    if dry_run:
+        info(f"[DRY RUN] Would create {count} records")
+        return
+
+    # Your logic here
+    success(f"Created {count} records!")
 ```
 
-### E2E Tests (Playwright)
+Commands are **automatically discovered** from `app/commands/` - just create a file and use the `@command` decorator.
 
 ```bash
-# Run all E2E tests
-bun test:e2e
-
-# With browser UI
-bun test:e2e:ui
-
-# Headed mode (see browser)
-bun test:e2e:headed
-
-# Debug mode
-bun test:e2e:debug
-
-# Show report
-bun test:e2e:report
-```
-
-Example test:
-
-```typescript
-// e2e/auth.spec.ts
-import { test, expect } from '@playwright/test';
-
-test('should login successfully', async ({ page }) => {
-  await page.goto('/login');
-  await page.fill('input[name="email"]', 'test@example.com');
-  await page.fill('input[name="password"]', 'password123');
-  await page.click('button[type="submit"]');
-
-  await expect(page).toHaveURL('/dashboard');
-});
+my_app cmd seed --count 100
+my_app cmd seed --dry-run
 ```
 
 ---
 
-## API Proxy (BFF Pattern)
+## 📁 Generated Project Structure
 
-All API calls go through Next.js API routes to:
-
-1. **Hide backend URL** from browser
-2. **Handle cookies** securely (HTTP-only)
-3. **Add auth headers** automatically
-4. **Transform responses** if needed
-
-### Example API Route
-
-```typescript
-// src/app/api/auth/login/route.ts
-import { NextRequest, NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
-
-const API_URL = process.env.BACKEND_URL;
-
-export async function POST(request: NextRequest) {
-  const body = await request.json();
-
-  const res = await fetch(`${API_URL}/api/v1/auth/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      username: body.email,
-      password: body.password,
-    }),
-  });
-
-  if (!res.ok) {
-    return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
-  }
-
-  const data = await res.json();
-
-  // Set HTTP-only cookies
-  const cookieStore = await cookies();
-  cookieStore.set('access_token', data.access_token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
-    maxAge: 60 * 30,
-  });
-
-  return NextResponse.json({ user: data.user });
-}
+```
+my_project/
+├── backend/
+│   ├── app/
+│   │   ├── main.py              # FastAPI app with lifespan
+│   │   ├── api/
+│   │   │   ├── routes/v1/       # Versioned API endpoints
+│   │   │   ├── deps.py          # Dependency injection
+│   │   │   └── router.py        # Route aggregation
+│   │   ├── core/                # Config, security, middleware
+│   │   ├── db/models/           # SQLAlchemy/MongoDB models
+│   │   ├── schemas/             # Pydantic schemas
+│   │   ├── repositories/        # Data access layer
+│   │   ├── services/            # Business logic
+│   │   ├── agents/              # PydanticAI agents
+│   │   ├── commands/            # Django-style CLI commands
+│   │   └── worker/              # Background tasks
+│   ├── cli/                     # Project CLI
+│   ├── tests/                   # pytest test suite
+│   └── alembic/                 # Database migrations
+├── frontend/
+│   ├── src/
+│   │   ├── app/                 # Next.js App Router
+│   │   ├── components/          # React components
+│   │   ├── hooks/               # useChat, useWebSocket, etc.
+│   │   └── stores/              # Zustand state management
+│   └── e2e/                     # Playwright tests
+├── docker-compose.yml
+├── Makefile
+└── README.md
 ```
 
 ---
 
-## Deployment
+## ⚙️ Configuration Options
 
-### Docker
+### Core Options
 
-```dockerfile
-# Dockerfile
-FROM oven/bun:1 AS builder
-WORKDIR /app
-COPY package.json bun.lockb ./
-RUN bun install --frozen-lockfile
-COPY . .
-RUN bun build
+| Option | Values | Description |
+|--------|--------|-------------|
+| **Database** | `postgresql`, `mongodb`, `sqlite`, `none` | Async by default |
+| **Auth** | `jwt`, `api_key`, `both`, `none` | JWT includes user management |
+| **OAuth** | `none`, `google` | Social login |
+| **Background Tasks** | `none`, `celery`, `taskiq`, `arq` | Distributed queues |
+| **Frontend** | `none`, `nextjs` | Next.js 15 + React 19 |
 
-FROM oven/bun:1-slim
-WORKDIR /app
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/package.json ./
-CMD ["bun", "start"]
-```
+### Integrations
 
-### Environment Variables for Production
+Select what you need:
 
 ```bash
-BACKEND_URL=https://api.your-domain.com
-NEXT_PUBLIC_WS_URL=wss://api.your-domain.com/api/v1/agent/ws
-NODE_ENV=production
+fastapi-fullstack new
+# ✓ Redis (caching/sessions)
+# ✓ Rate limiting (slowapi)
+# ✓ Pagination (fastapi-pagination)
+# ✓ Admin Panel (SQLAdmin)
+# ✓ AI Agent (PydanticAI)
+# ✓ Webhooks
+# ✓ Sentry
+# ✓ Logfire
+# ✓ Prometheus
+# ... and more
 ```
 
 ---
 
-## Documentation
+## 📚 Documentation
 
-| Resource | Link |
-|----------|------|
-| Template Repository | [github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template) |
-| Frontend Guide | [docs/frontend.md](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/frontend.md) |
-{%- if cookiecutter.enable_ai_agent %}
-| AI Agent Guide | [docs/ai-agent.md](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/ai-agent.md) |
-{%- endif %}
-{%- if cookiecutter.enable_logfire %}
-| Observability Guide | [docs/observability.md](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/observability.md) |
-{%- endif %}
-| Next.js Docs | [nextjs.org/docs](https://nextjs.org/docs) |
-| Tailwind CSS Docs | [tailwindcss.com/docs](https://tailwindcss.com/docs) |
+| Document | Description |
+|----------|-------------|
+| [Architecture](./docs/architecture.md) | Repository + Service pattern, layered design |
+| [Frontend](./docs/frontend.md) | Next.js setup, auth, state management |
+| [AI Agent](./docs/ai-agent.md) | PydanticAI, tools, WebSocket streaming |
+| [Observability](./docs/observability.md) | Logfire integration, tracing, metrics |
+| [Deployment](./docs/deployment.md) | Docker, Kubernetes, production setup |
+| [Development](./docs/development.md) | Local setup, testing, debugging |
 
 ---
 
-## License
+## Star History
 
-MIT
+<a href="https://www.star-history.com/#vstorm-co/full-stack-fastapi-nextjs-llm-template&type=Date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=vstorm-co/full-stack-fastapi-nextjs-llm-template&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=vstorm-co/full-stack-fastapi-nextjs-llm-template&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=vstorm-co/full-stack-fastapi-nextjs-llm-template&type=Date" />
+ </picture>
+</a>
+
+---
+
+## 🙏 Inspiration
+
+This project is inspired by:
+
+- [full-stack-fastapi-template](https://github.com/fastapi/full-stack-fastapi-template) by @tiangolo
+- [fastapi-template](https://github.com/s3rius/fastapi-template) by @s3rius
+- [FastAPI Best Practices](https://github.com/zhanymkanov/fastapi-best-practices) by @zhanymkanov
+- Django's management commands system
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read our [Contributing Guide](./CONTRIBUTING.md) for details.
+
+---
+
+## 📄 License
+
+MIT License - see [LICENSE](./LICENSE) for details.
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/vstorm-co">VStorm</a>
+</p>

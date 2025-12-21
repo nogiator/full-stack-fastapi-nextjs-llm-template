@@ -1,800 +1,545 @@
-# {{ cookiecutter.project_name }}
-
-{{ cookiecutter.project_description }}
+# Full-Stack FastAPI + Next.js Template for AI/LLM Applications
 
 <p align="center">
-  <img src="https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue?logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white" alt="FastAPI">
-{%- if cookiecutter.use_frontend %}
-  <img src="https://img.shields.io/badge/Next.js-15-black?logo=next.js&logoColor=white" alt="Next.js">
-{%- endif %}
-{%- if cookiecutter.use_postgresql %}
-  <img src="https://img.shields.io/badge/PostgreSQL-16-336791?logo=postgresql&logoColor=white" alt="PostgreSQL">
-{%- endif %}
-{%- if cookiecutter.use_mongodb %}
-  <img src="https://img.shields.io/badge/MongoDB-7-47A248?logo=mongodb&logoColor=white" alt="MongoDB">
-{%- endif %}
-{%- if cookiecutter.enable_redis %}
-  <img src="https://img.shields.io/badge/Redis-7-DC382D?logo=redis&logoColor=white" alt="Redis">
-{%- endif %}
+  <a href="https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/stargazers"><img src="https://img.shields.io/github/stars/vstorm-co/full-stack-fastapi-nextjs-llm-template?style=flat&logo=github&color=yellow" alt="GitHub Stars"></a>
+  <a href="https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/LICENSE"><img src="https://img.shields.io/github/license/vstorm-co/full-stack-fastapi-nextjs-llm-template?color=blue" alt="License"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue?logo=python&logoColor=white" alt="Python"></a>
+  <a href="https://pypi.org/project/fastapi-fullstack/"><img src="https://img.shields.io/pypi/v/fastapi-fullstack?color=green&logo=pypi&logoColor=white" alt="PyPI"></a>
+  <img src="https://img.shields.io/badge/coverage-100%25-brightgreen" alt="Coverage">
+  <img src="https://img.shields.io/badge/integrations-20%2B-brightgreen" alt="20+ Integrations">
 </p>
 
 <p align="center">
-  <sub>Generated with <a href="https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template">Full-Stack FastAPI + Next.js Template</a></sub>
+  <b>Production-ready project generator for AI/LLM applications with 20+ enterprise integrations.</b><br>
+  <sub>Built with FastAPI, Next.js 15, PydanticAI, and everything you need for professional business applications.</sub>
+</p>
+
+<p align="center">
+  <a href="#-why-this-template">Why This Template</a> •
+  <a href="#-features">Features</a> •
+  <a href="#-demo">Demo</a> •
+  <a href="#-quick-start">Quick Start</a> •
+  <a href="#-architecture">Architecture</a> •
+  <a href="#-ai-agent">AI Agent</a> •
+  <a href="#-observability-with-logfire">Logfire</a> •
+  <a href="#-documentation">Documentation</a>
+</p>
+
+## Related Projects
+
+> **Building advanced AI agents?** Check out [pydantic-deep](https://github.com/vstorm-co/pydantic-deepagents) - a deep agent framework built on pydantic-ai with planning, filesystem, and subagent capabilities.
+
+---
+
+## 🎯 Why This Template
+
+Building AI/LLM applications requires more than just an API wrapper. You need:
+
+- **Type-safe AI agents** with tool/function calling
+- **Real-time streaming** responses via WebSocket
+- **Conversation persistence** and history management
+- **Production infrastructure** - auth, rate limiting, observability
+- **Enterprise integrations** - background tasks, webhooks, admin panels
+
+This template gives you all of that out of the box, with **20+ configurable integrations** so you can focus on building your AI product, not boilerplate.
+
+### Perfect For
+
+- 🤖 **AI Chatbots & Assistants** - PydanticAI agents with streaming responses
+- 📊 **ML Applications** - Background task processing with Celery/Taskiq
+- 🏢 **Enterprise SaaS** - Full auth, admin panel, webhooks, and more
+- 🚀 **Startups** - Ship fast with production-ready infrastructure
+
+---
+
+## ✨ Features
+
+### 🤖 AI/LLM First
+
+- **[PydanticAI](https://ai.pydantic.dev)** - Type-safe AI agents with tool support
+- **WebSocket Streaming** - Real-time responses using `iter()` method
+- **Conversation Persistence** - Save chat history to database
+- **Custom Tools** - Easily extend agent capabilities
+- **Multi-model Support** - OpenAI, Anthropic, and more
+
+### ⚡ Backend (FastAPI)
+
+- **[FastAPI](https://fastapi.tiangolo.com)** + **[Pydantic v2](https://docs.pydantic.dev)** - High-performance async API
+- **Multiple Databases** - PostgreSQL (async), MongoDB (async), SQLite
+- **Authentication** - JWT + Refresh tokens, API Keys, OAuth2 (Google)
+- **Background Tasks** - Celery, Taskiq, or ARQ
+- **Django-style CLI** - Custom management commands with auto-discovery
+
+### 🎨 Frontend (Next.js 15)
+
+- **React 19** + **TypeScript** + **Tailwind CSS v4**
+- **AI Chat Interface** - WebSocket streaming, tool call visualization
+- **Authentication** - HTTP-only cookies, auto-refresh
+- **Dark Mode** + **i18n** (optional)
+
+### 🔌 20+ Enterprise Integrations
+
+| Category | Integrations |
+|----------|-------------|
+| **Caching & State** | Redis, fastapi-cache2 |
+| **Security** | Rate limiting, CORS, CSRF protection |
+| **Observability** | Logfire, Sentry, Prometheus |
+| **Admin** | SQLAdmin panel with auth |
+| **Events** | Webhooks, WebSockets |
+| **DevOps** | Docker, GitHub Actions, GitLab CI, Kubernetes |
+
+---
+
+## 🎬 Demo
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/app_start.gif" alt="FastAPI Fullstack Generator Demo">
+</p>
+
+### Screenshots
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/docs_2.png" alt="API Documentation"><br><br>
+  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/admin.png" alt="Admin Panel"><br><br>
+  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/chat_view_light.png" alt="Chat Interface - Light Mode"><br><br>
+  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/chat_view_dark.png" alt="Chat Interface - Dark Mode"><br><br>
+  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/login.png" alt="Login Page"><br><br>
+  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/register.png" alt="Register Page">
 </p>
 
 ---
 
-## Features
+## 🏗️ Architecture
 
-{%- if cookiecutter.enable_ai_agent %}
-- 🤖 **AI Agent** - PydanticAI with WebSocket streaming
-{%- endif %}
-{%- if cookiecutter.use_jwt %}
-- 🔐 **JWT Authentication** - Access + Refresh tokens
-{%- endif %}
-{%- if cookiecutter.use_api_key %}
-- 🔑 **API Key Auth** - Header-based authentication
-{%- endif %}
-{%- if cookiecutter.enable_oauth %}
-- 🌐 **OAuth2** - Social login (Google)
-{%- endif %}
-{%- if cookiecutter.use_postgresql %}
-- 🐘 **PostgreSQL** - Async with SQLAlchemy 2.0
-{%- endif %}
-{%- if cookiecutter.use_mongodb %}
-- 🍃 **MongoDB** - Async with Motor
-{%- endif %}
-{%- if cookiecutter.enable_redis %}
-- 📦 **Redis** - Caching and sessions
-{%- endif %}
-{%- if cookiecutter.use_celery %}
-- 🥬 **Celery** - Background task processing
-{%- endif %}
-{%- if cookiecutter.use_taskiq %}
-- ⚡ **Taskiq** - Async task queue
-{%- endif %}
-{%- if cookiecutter.enable_rate_limiting %}
-- 🚦 **Rate Limiting** - Request throttling
-{%- endif %}
-{%- if cookiecutter.enable_admin_panel %}
-- 🗄️ **Admin Panel** - SQLAdmin with automatic model discovery
-{%- endif %}
-{%- if cookiecutter.enable_logfire %}
-- 📊 **Logfire** - Full-stack observability (see [Logfire section](#logfire-observability))
-{%- endif %}
-{%- if cookiecutter.enable_sentry %}
-- 🛡️ **Sentry** - Error tracking
-{%- endif %}
-{%- if cookiecutter.use_frontend %}
-- 🎨 **Next.js 15** - React 19 + TypeScript + Tailwind
-{%- endif %}
-{%- if cookiecutter.enable_docker %}
-- 🐳 **Docker** - Containerized development
-{%- endif %}
+```mermaid
+graph TB
+    subgraph Frontend["Frontend (Next.js 15)"]
+        UI[React Components]
+        WS[WebSocket Client]
+        Store[Zustand Stores]
+    end
+
+    subgraph Backend["Backend (FastAPI)"]
+        API[API Routes]
+        Services[Services Layer]
+        Repos[Repositories]
+        Agent[PydanticAI Agent]
+    end
+
+    subgraph Infrastructure
+        DB[(PostgreSQL/MongoDB)]
+        Redis[(Redis)]
+        Queue[Celery/Taskiq]
+    end
+
+    subgraph External
+        LLM[OpenAI/Anthropic]
+        Webhook[Webhook Endpoints]
+    end
+
+    UI --> API
+    WS <--> Agent
+    API --> Services
+    Services --> Repos
+    Services --> Agent
+    Repos --> DB
+    Agent --> LLM
+    Services --> Redis
+    Services --> Queue
+    Services --> Webhook
+```
+
+### Layered Architecture
+
+The backend follows a clean **Repository + Service** pattern:
+
+```mermaid
+graph LR
+    A[API Routes] --> B[Services]
+    B --> C[Repositories]
+    C --> D[(Database)]
+
+    B --> E[External APIs]
+    B --> F[AI Agents]
+```
+
+| Layer | Responsibility |
+|-------|---------------|
+| **Routes** | HTTP handling, validation, auth |
+| **Services** | Business logic, orchestration |
+| **Repositories** | Data access, queries |
+
+See [Architecture Documentation](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/architecture.md) for details.
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
-### Prerequisites
-
-- Python 3.11+ ([uv](https://docs.astral.sh/uv/) recommended)
-{%- if cookiecutter.use_frontend %}
-- [Bun](https://bun.sh) (for frontend)
-{%- endif %}
-{%- if cookiecutter.enable_docker %}
-- Docker & Docker Compose
-{%- endif %}
-
-### 1. Setup Backend
+### Installation
 
 ```bash
-cd backend
+# pip
+pip install fastapi-fullstack
 
-# Install dependencies
+# uv (recommended)
+uv tool install fastapi-fullstack
+
+# pipx
+pipx install fastapi-fullstack
+```
+
+### Create Your Project
+
+```bash
+# Interactive wizard (recommended)
+fastapi-fullstack new
+
+# Quick mode with options
+fastapi-fullstack create my_ai_app \
+  --database postgresql \
+  --auth jwt \
+  --frontend nextjs
+```
+
+### Start Development
+
+```bash
+cd my_ai_app
+
+# Backend
+cd backend
 uv sync
-
-# Configure environment
 cp .env.example .env
-# Edit .env with your settings
-```
-
-{%- if cookiecutter.use_postgresql %}
-
-### 2. Start PostgreSQL
-
-```bash
-# Using Docker (recommended)
-docker run -d \
-  --name {{ cookiecutter.project_slug }}-db \
-  -e POSTGRES_PASSWORD=secret \
-  -e POSTGRES_DB={{ cookiecutter.project_slug }} \
-  -p 5432:5432 \
-  postgres:16-alpine
-
-# Or use existing PostgreSQL - update .env accordingly
-```
-{%- endif %}
-
-{%- if cookiecutter.enable_redis %}
-
-### {% if cookiecutter.use_postgresql %}3{% else %}2{% endif %}. Start Redis
-
-```bash
-docker run -d \
-  --name {{ cookiecutter.project_slug }}-redis \
-  -p 6379:6379 \
-  redis:7-alpine
-```
-{%- endif %}
-
-{%- if cookiecutter.use_postgresql or cookiecutter.use_sqlite %}
-
-### {% if cookiecutter.enable_redis %}4{% elif cookiecutter.use_postgresql %}3{% else %}2{% endif %}. Initialize Database
-
-```bash
-cd backend
-
-# Run migrations
-uv run alembic upgrade head
-{%- if cookiecutter.use_jwt %}
+alembic upgrade head
 
 # Create admin user
-uv run {{ cookiecutter.project_slug }} user create-admin --email admin@example.com
-{%- endif %}
-```
-{%- endif %}
+uv run my_ai_app user create --email admin@example.com --password secret123 --superuser
 
-### {% if cookiecutter.use_postgresql and cookiecutter.enable_redis %}5{% elif cookiecutter.use_postgresql or cookiecutter.enable_redis %}4{% elif cookiecutter.use_sqlite %}3{% else %}2{% endif %}. Run Development Server
+# Start server
+uv run uvicorn app.main:app --reload
 
-```bash
-cd backend
-uv run uvicorn app.main:app --reload --port {{ cookiecutter.backend_port }}
-```
-
-{%- if cookiecutter.use_frontend %}
-
-### {% if cookiecutter.use_postgresql and cookiecutter.enable_redis %}6{% elif cookiecutter.use_postgresql or cookiecutter.enable_redis %}5{% elif cookiecutter.use_sqlite %}4{% else %}3{% endif %}. Setup Frontend
-
-```bash
+# Frontend (new terminal)
 cd frontend
 bun install
 bun dev
 ```
-{%- endif %}
 
-### Access Points
+> **Note:** The admin user is required to access the SQLAdmin panel at `/admin`. Use the `--superuser` flag to grant full admin privileges.
 
-| Service | URL |
-|---------|-----|
-| API | http://localhost:{{ cookiecutter.backend_port }} |
-| API Docs (Swagger) | http://localhost:{{ cookiecutter.backend_port }}/docs |
-| API Docs (ReDoc) | http://localhost:{{ cookiecutter.backend_port }}/redoc |
-{%- if cookiecutter.enable_admin_panel %}
-| Admin Panel | http://localhost:{{ cookiecutter.backend_port }}/admin |
-{%- endif %}
-{%- if cookiecutter.use_frontend %}
-| Frontend | http://localhost:{{ cookiecutter.frontend_port }} |
-{%- endif %}
+**Access:**
+- API: http://localhost:8000
+- Docs: http://localhost:8000/docs
+- Admin Panel: http://localhost:8000/admin
+- Frontend: http://localhost:3000
 
 ---
 
-{%- if cookiecutter.enable_docker %}
+## 🤖 AI Agent
 
-## Docker Development
+### PydanticAI Integration
 
-### Start All Services
+The template includes a fully configured AI agent with:
 
-```bash
-# Development mode
-docker compose up -d
+```python
+# app/agents/assistant.py
+from pydantic_ai import Agent, RunContext
 
-# Production mode
-docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+@dataclass
+class Deps:
+    user_id: str | None = None
+    db: AsyncSession | None = None
 
-# View logs
-docker compose logs -f
+agent = Agent[Deps, str](
+    model="openai:gpt-4o-mini",
+    system_prompt="You are a helpful assistant.",
+)
+
+@agent.tool
+async def search_database(ctx: RunContext[Deps], query: str) -> list[dict]:
+    """Search the database for relevant information."""
+    # Access user context and database via ctx.deps
+    ...
 ```
 
-### Services Started
+### WebSocket Streaming
 
-| Service | Description |
-|---------|-------------|
-| `backend` | FastAPI application |
-{%- if cookiecutter.use_postgresql %}
-| `db` | PostgreSQL database |
-{%- endif %}
-{%- if cookiecutter.enable_redis %}
-| `redis` | Redis cache |
-{%- endif %}
-{%- if cookiecutter.use_celery %}
-| `celery-worker` | Celery worker |
-| `celery-beat` | Celery scheduler |
-| `flower` | Celery monitoring (port 5555) |
-{%- endif %}
-{%- if cookiecutter.use_taskiq %}
-| `taskiq-worker` | Taskiq worker |
-{%- endif %}
-{%- if cookiecutter.use_frontend %}
-| `frontend` | Next.js application |
-{%- endif %}
+Real-time responses with full event access:
+
+```python
+@router.websocket("/ws")
+async def agent_ws(websocket: WebSocket):
+    await websocket.accept()
+
+    async for event in agent.iter(user_input, deps=deps):
+        if isinstance(event, PartDeltaEvent):
+            await websocket.send_json({
+                "type": "token",
+                "content": event.delta.content
+            })
+```
+
+### Adding Custom Tools
+
+```python
+@agent.tool
+async def get_weather(ctx: RunContext[Deps], city: str) -> dict:
+    """Get current weather for a city."""
+    async with httpx.AsyncClient() as client:
+        response = await client.get(f"https://api.weather.com/{city}")
+        return response.json()
+```
+
+See [AI Agent Documentation](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/ai-agent.md) for more.
 
 ---
-{%- endif %}
 
-## Project CLI
+## 📊 Observability with Logfire
 
-This project includes a Django-style CLI for common tasks:
+[Logfire](https://logfire.pydantic.dev) provides complete observability for your application - from AI agents to database queries. Built by the Pydantic team, it offers first-class support for the entire Python ecosystem.
 
-### Server Commands
+### What Gets Instrumented
 
-```bash
-# Start development server
-{{ cookiecutter.project_slug }} server run --reload
+```mermaid
+graph LR
+    subgraph Your App
+        API[FastAPI]
+        Agent[PydanticAI]
+        DB[(Database)]
+        Cache[(Redis)]
+        Queue[Celery/Taskiq]
+        HTTP[HTTPX]
+    end
 
-# Show all registered routes
-{{ cookiecutter.project_slug }} server routes
+    subgraph Logfire
+        Traces[Traces]
+        Metrics[Metrics]
+        Logs[Logs]
+    end
+
+    API --> Traces
+    Agent --> Traces
+    DB --> Traces
+    Cache --> Traces
+    Queue --> Traces
+    HTTP --> Traces
 ```
 
-{%- if cookiecutter.use_postgresql or cookiecutter.use_sqlite %}
+| Component | What You See |
+|-----------|-------------|
+| **PydanticAI** | Agent runs, tool calls, LLM requests, token usage, streaming events |
+| **FastAPI** | Request/response traces, latency, status codes, route performance |
+| **PostgreSQL/MongoDB** | Query execution time, slow queries, connection pool stats |
+| **Redis** | Cache hits/misses, command latency, key patterns |
+| **Celery/Taskiq** | Task execution, queue depth, worker performance |
+| **HTTPX** | External API calls, response times, error rates |
 
-### Database Commands
+### Configuration
 
-```bash
-# Initialize database (run all migrations)
-{{ cookiecutter.project_slug }} db init
-
-# Create new migration
-{{ cookiecutter.project_slug }} db migrate -m "Add new table"
-
-# Apply pending migrations
-{{ cookiecutter.project_slug }} db upgrade
-
-# Rollback last migration
-{{ cookiecutter.project_slug }} db downgrade
-
-# Show current revision
-{{ cookiecutter.project_slug }} db current
-```
-{%- endif %}
-
-{%- if cookiecutter.use_jwt %}
-
-### User Management
+Enable Logfire and select which components to instrument:
 
 ```bash
-# Create user (interactive)
-{{ cookiecutter.project_slug }} user create
-
-# Create admin user
-{{ cookiecutter.project_slug }} user create-admin --email admin@example.com
-
-# List all users
-{{ cookiecutter.project_slug }} user list
-
-# Change user role
-{{ cookiecutter.project_slug }} user set-role user@example.com --role admin
+fastapi-fullstack new
+# ✓ Enable Logfire observability
+#   ✓ Instrument FastAPI
+#   ✓ Instrument Database
+#   ✓ Instrument Redis
+#   ✓ Instrument Celery
+#   ✓ Instrument HTTPX
 ```
-{%- endif %}
 
-{%- if cookiecutter.use_celery %}
+### Usage
 
-### Celery Commands
+```python
+# Automatic instrumentation in app/main.py
+import logfire
+
+logfire.configure()
+logfire.instrument_fastapi(app)
+logfire.instrument_asyncpg()
+logfire.instrument_redis()
+logfire.instrument_httpx()
+```
+
+```python
+# Manual spans for custom logic
+with logfire.span("process_order", order_id=order.id):
+    await validate_order(order)
+    await charge_payment(order)
+    await send_confirmation(order)
+```
+
+For more details, see [Logfire Documentation](https://logfire.pydantic.dev/docs/integrations/).
+
+---
+
+## 🛠️ Django-style CLI
+
+Each generated project includes a powerful CLI inspired by Django's management commands:
+
+### Built-in Commands
 
 ```bash
-# Start worker
-{{ cookiecutter.project_slug }} celery worker
+# Server
+my_app server run --reload
+my_app server routes
 
-# Start beat scheduler
-{{ cookiecutter.project_slug }} celery beat
+# Database (Alembic wrapper)
+my_app db init
+my_app db migrate -m "Add users"
+my_app db upgrade
 
-# Start Flower monitoring
-{{ cookiecutter.project_slug }} celery flower
+# Users
+my_app user create --email admin@example.com --superuser
+my_app user list
 ```
-{%- endif %}
-
-{%- if cookiecutter.use_taskiq %}
-
-### Taskiq Commands
-
-```bash
-# Start worker
-{{ cookiecutter.project_slug }} taskiq worker
-
-# Start scheduler
-{{ cookiecutter.project_slug }} taskiq scheduler
-```
-{%- endif %}
 
 ### Custom Commands
 
-Create your own commands in `app/commands/`:
+Create your own commands with auto-discovery:
 
 ```python
 # app/commands/seed.py
-from app.commands import command, success
+from app.commands import command, success, error
 import click
 
 @command("seed", help="Seed database with test data")
 @click.option("--count", "-c", default=10, type=int)
-def seed_database(count: int):
-    # Your seeding logic here
+@click.option("--dry-run", is_flag=True)
+def seed_database(count: int, dry_run: bool):
+    """Seed the database with sample data."""
+    if dry_run:
+        info(f"[DRY RUN] Would create {count} records")
+        return
+
+    # Your logic here
     success(f"Created {count} records!")
 ```
 
+Commands are **automatically discovered** from `app/commands/` - just create a file and use the `@command` decorator.
+
 ```bash
-# Run custom command
-{{ cookiecutter.project_slug }} cmd seed --count 100
+my_app cmd seed --count 100
+my_app cmd seed --dry-run
 ```
-
-> **Note:** Commands are auto-discovered from `app/commands/`. Just create a file with the `@command` decorator.
 
 ---
 
-## Makefile Commands
-
-| Command | Description |
-|---------|-------------|
-| `make install` | Install dependencies |
-| `make run` | Start dev server with hot reload |
-| `make test` | Run tests |
-| `make test-cov` | Run tests with coverage |
-| `make lint` | Check code with ruff |
-| `make format` | Format code with ruff |
-| `make typecheck` | Run mypy type checking |
-{%- if cookiecutter.use_postgresql or cookiecutter.use_sqlite %}
-| `make db-migrate` | Create new migration |
-| `make db-upgrade` | Apply migrations |
-| `make db-downgrade` | Rollback migration |
-{%- endif %}
-{%- if cookiecutter.enable_docker %}
-| `make docker-up` | Start all Docker services |
-| `make docker-down` | Stop all Docker services |
-| `make docker-logs` | View Docker logs |
-{%- endif %}
-
----
-
-## Project Structure
+## 📁 Generated Project Structure
 
 ```
-{{ cookiecutter.project_slug }}/
+my_project/
 ├── backend/
 │   ├── app/
 │   │   ├── main.py              # FastAPI app with lifespan
 │   │   ├── api/
-│   │   │   ├── routes/v1/       # API endpoints
+│   │   │   ├── routes/v1/       # Versioned API endpoints
 │   │   │   ├── deps.py          # Dependency injection
 │   │   │   └── router.py        # Route aggregation
-│   │   ├── core/
-│   │   │   ├── config.py        # Settings (pydantic-settings)
-{%- if cookiecutter.use_auth %}
-│   │   │   ├── security.py      # Auth utilities
-{%- endif %}
-{%- if cookiecutter.enable_logfire %}
-│   │   │   └── logfire_setup.py # Observability
-{%- endif %}
-│   │   ├── db/
-│   │   │   ├── models/          # Database models
-│   │   │   └── session.py       # Connection management
-{%- if cookiecutter.enable_admin_panel %}
-│   │   ├── admin.py             # SQLAdmin with auto-discovery
-{%- endif %}
+│   │   ├── core/                # Config, security, middleware
+│   │   ├── db/models/           # SQLAlchemy/MongoDB models
 │   │   ├── schemas/             # Pydantic schemas
 │   │   ├── repositories/        # Data access layer
 │   │   ├── services/            # Business logic
-{%- if cookiecutter.enable_ai_agent %}
 │   │   ├── agents/              # PydanticAI agents
-{%- endif %}
-│   │   ├── commands/            # Custom CLI commands
-{%- if cookiecutter.use_celery or cookiecutter.use_taskiq %}
+│   │   ├── commands/            # Django-style CLI commands
 │   │   └── worker/              # Background tasks
-{%- endif %}
 │   ├── cli/                     # Project CLI
-│   ├── tests/                   # Test suite
-{%- if cookiecutter.use_postgresql or cookiecutter.use_sqlite %}
+│   ├── tests/                   # pytest test suite
 │   └── alembic/                 # Database migrations
-{%- endif %}
-{%- if cookiecutter.use_frontend %}
 ├── frontend/
 │   ├── src/
 │   │   ├── app/                 # Next.js App Router
 │   │   ├── components/          # React components
-│   │   ├── hooks/               # Custom hooks
-│   │   ├── stores/              # Zustand stores
-│   │   └── lib/                 # Utilities
+│   │   ├── hooks/               # useChat, useWebSocket, etc.
+│   │   └── stores/              # Zustand state management
 │   └── e2e/                     # Playwright tests
-{%- endif %}
-{%- if cookiecutter.enable_docker %}
 ├── docker-compose.yml
-├── docker-compose.prod.yml
-{%- endif %}
 ├── Makefile
 └── README.md
 ```
 
 ---
 
-## Architecture
+## ⚙️ Configuration Options
 
-This project follows a **Repository + Service** pattern:
+### Core Options
 
-```
-API Routes → Services → Repositories → Database
-```
+| Option | Values | Description |
+|--------|--------|-------------|
+| **Database** | `postgresql`, `mongodb`, `sqlite`, `none` | Async by default |
+| **Auth** | `jwt`, `api_key`, `both`, `none` | JWT includes user management |
+| **OAuth** | `none`, `google` | Social login |
+| **Background Tasks** | `none`, `celery`, `taskiq`, `arq` | Distributed queues |
+| **Frontend** | `none`, `nextjs` | Next.js 15 + React 19 |
 
-| Layer | Location | Responsibility |
-|-------|----------|----------------|
-| **Routes** | `app/api/routes/` | HTTP handling, validation |
-| **Services** | `app/services/` | Business logic |
-| **Repositories** | `app/repositories/` | Data access |
-| **Schemas** | `app/schemas/` | Request/Response models |
-| **Models** | `app/db/models/` | Database models |
+### Integrations
 
-> 📚 For detailed architecture documentation, see the [template repository](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/architecture.md).
+Select what you need:
 
----
-{%- if cookiecutter.enable_admin_panel %}
-
-## Admin Panel
-
-The admin panel provides a web-based interface for managing database records. It uses [SQLAdmin](https://aminalaee.dev/sqladmin/) with **automatic model discovery** - all SQLAlchemy models are automatically registered without manual configuration.
-
-### Access
-
-- URL: `http://localhost:{{ cookiecutter.backend_port }}/admin`
-{%- if cookiecutter.admin_require_auth %}
-- **Authentication required**: Login with superuser credentials
-{%- endif %}
-
-### Features
-
-| Feature | Description |
-|---------|-------------|
-| **Auto-Discovery** | All models from `Base.registry` are automatically registered |
-| **Smart Defaults** | Searchable columns (String types), sortable columns, form exclusions |
-| **Sensitive Data Protection** | Password, token, secret fields auto-excluded from forms |
-| **Custom Overrides** | Per-model configuration in `CUSTOM_MODEL_CONFIGS` |
-
-### Customizing Model Views
-
-To customize a model's admin view, add it to `CUSTOM_MODEL_CONFIGS` in `app/admin.py`:
-
-```python
-CUSTOM_MODEL_CONFIGS: dict[type, dict[str, Any]] = {
-    User: {
-        "icon": "fa-solid fa-user",
-        "form_excluded_columns": [User.hashed_password],
-        "can_delete": False,  # Prevent deletion
-    },
-    Order: {
-        "name": "Customer Order",
-        "name_plural": "Customer Orders",
-        "column_list": [Order.id, Order.status, Order.created_at],
-        "can_create": False,  # Read-only
-    },
-}
-```
-
-### Available Options
-
-| Option | Type | Description |
-|--------|------|-------------|
-| `name` | `str` | Display name in admin |
-| `name_plural` | `str` | Plural name for list view |
-| `icon` | `str` | Font Awesome icon class |
-| `column_list` | `list` | Columns to show in list view |
-| `column_searchable_list` | `list` | Columns to enable search |
-| `column_sortable_list` | `list` | Columns to enable sorting |
-| `form_excluded_columns` | `list` | Columns to hide in forms |
-| `can_create` | `bool` | Allow creating records |
-| `can_edit` | `bool` | Allow editing records |
-| `can_delete` | `bool` | Allow deleting records |
-| `can_view_details` | `bool` | Allow viewing record details |
-
-### Excluding Models
-
-To exclude a model from auto-registration:
-
-```python
-# In app/admin.py setup_admin()
-register_models_auto(
-    admin,
-    Base,
-    exclude_models=[InternalLog, TempData],  # These won't appear in admin
-    custom_configs=CUSTOM_MODEL_CONFIGS,
-)
+```bash
+fastapi-fullstack new
+# ✓ Redis (caching/sessions)
+# ✓ Rate limiting (slowapi)
+# ✓ Pagination (fastapi-pagination)
+# ✓ Admin Panel (SQLAdmin)
+# ✓ AI Agent (PydanticAI)
+# ✓ Webhooks
+# ✓ Sentry
+# ✓ Logfire
+# ✓ Prometheus
+# ... and more
 ```
 
 ---
-{%- endif %}
 
-## Configuration
+## 📚 Documentation
 
-All configuration via environment variables in `.env`:
-
-### Core Settings
-
-```bash
-ENVIRONMENT=local          # local, staging, production
-DEBUG=true
-PROJECT_NAME={{ cookiecutter.project_name }}
-```
-
-{%- if cookiecutter.use_postgresql %}
-
-### Database (PostgreSQL)
-
-```bash
-POSTGRES_HOST=localhost
-POSTGRES_PORT=5432
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=secret
-POSTGRES_DB={{ cookiecutter.project_slug }}
-
-# Pool settings
-DB_POOL_SIZE={{ cookiecutter.db_pool_size }}
-DB_MAX_OVERFLOW={{ cookiecutter.db_max_overflow }}
-```
-{%- endif %}
-
-{%- if cookiecutter.use_mongodb %}
-
-### Database (MongoDB)
-
-```bash
-MONGO_HOST=localhost
-MONGO_PORT=27017
-MONGO_DB={{ cookiecutter.project_slug }}
-MONGO_USER=
-MONGO_PASSWORD=
-```
-{%- endif %}
-
-{%- if cookiecutter.use_jwt %}
-
-### Authentication
-
-```bash
-# Generate with: openssl rand -hex 32
-SECRET_KEY=change-me-in-production
-
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-REFRESH_TOKEN_EXPIRE_MINUTES=10080  # 7 days
-```
-{%- endif %}
-
-{%- if cookiecutter.enable_redis %}
-
-### Redis
-
-```bash
-REDIS_HOST=localhost
-REDIS_PORT=6379
-REDIS_PASSWORD=
-```
-{%- endif %}
-
-{%- if cookiecutter.enable_ai_agent %}
-
-### AI Agent
-
-```bash
-OPENAI_API_KEY=sk-...
-AI_MODEL=gpt-4o-mini
-AI_TEMPERATURE=0.7
-```
-{%- endif %}
-
-{%- if cookiecutter.enable_logfire %}
-
-### Logfire
-
-```bash
-# Get token at https://logfire.pydantic.dev
-LOGFIRE_TOKEN=your-token
-LOGFIRE_SERVICE_NAME={{ cookiecutter.project_slug }}
-```
-{%- endif %}
-
-{%- if cookiecutter.enable_sentry %}
-
-### Sentry
-
-```bash
-SENTRY_DSN=https://xxx@sentry.io/xxx
-```
-{%- endif %}
-
----
-{%- if cookiecutter.enable_logfire %}
-
-## Logfire Observability
-
-[Logfire](https://logfire.pydantic.dev) provides complete observability for your application. Built by the Pydantic team, it offers first-class support for the Python ecosystem.
-
-### What Gets Instrumented
-
-| Component | What You See |
-|-----------|-------------|
-{%- if cookiecutter.enable_ai_agent %}
-| **PydanticAI** | Agent runs, tool calls, LLM requests, token usage |
-{%- endif %}
-| **FastAPI** | Request/response traces, latency, status codes |
-{%- if cookiecutter.use_postgresql %}
-| **PostgreSQL** | Query execution time, slow queries, connection pool |
-{%- endif %}
-{%- if cookiecutter.use_mongodb %}
-| **MongoDB** | Collection operations, query filters, execution time |
-{%- endif %}
-{%- if cookiecutter.enable_redis %}
-| **Redis** | Cache hits/misses, command latency, key patterns |
-{%- endif %}
-{%- if cookiecutter.use_celery %}
-| **Celery** | Task execution, queue depth, worker performance |
-{%- endif %}
-{%- if cookiecutter.logfire_httpx %}
-| **HTTPX** | External API calls, response times, error rates |
-{%- endif %}
-
-### Custom Instrumentation
-
-```python
-import logfire
-
-# Manual spans for important operations
-with logfire.span("process_order", order_id=str(order.id)):
-    await validate_order(order)
-    await charge_payment(order)
-    await send_confirmation(order)
-
-# Structured logging
-logfire.info("User registered", user_id=user.id, email=user.email)
-```
-
-> 📚 For detailed Logfire documentation, see the [template observability guide](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/observability.md).
-{%- endif %}
+| Document | Description |
+|----------|-------------|
+| [Architecture](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/architecture.md) | Repository + Service pattern, layered design |
+| [Frontend](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/frontend.md) | Next.js setup, auth, state management |
+| [AI Agent](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/ai-agent.md) | PydanticAI, tools, WebSocket streaming |
+| [Observability](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/observability.md) | Logfire integration, tracing, metrics |
+| [Deployment](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/deployment.md) | Docker, Kubernetes, production setup |
+| [Development](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/development.md) | Local setup, testing, debugging |
 
 ---
 
-## API Examples
+## Star History
 
-{%- if cookiecutter.use_jwt %}
-
-### Authentication
-
-```bash
-# Register
-curl -X POST http://localhost:{{ cookiecutter.backend_port }}/api/v1/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{"email": "user@example.com", "password": "password123"}'
-
-# Login
-curl -X POST http://localhost:{{ cookiecutter.backend_port }}/api/v1/auth/login \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "username=user@example.com&password=password123"
-
-# Protected endpoint
-curl http://localhost:{{ cookiecutter.backend_port }}/api/v1/users/me \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
-```
-{%- endif %}
-
-### Health Check
-
-```bash
-curl http://localhost:{{ cookiecutter.backend_port }}/api/v1/health
-```
-
-{%- if cookiecutter.enable_ai_agent %}
-
-### AI Agent (WebSocket)
-
-Connect to `ws://localhost:{{ cookiecutter.backend_port }}/api/v1/agent/ws` and send:
-
-```json
-{"type": "message", "content": "Hello!", "history": []}
-```
-
-Response events:
-- `start` - Stream started
-- `token` - Text token (streaming)
-- `tool_call` - Tool invocation
-- `end` - Stream complete
-{%- endif %}
+<a href="https://www.star-history.com/#vstorm-co/full-stack-fastapi-nextjs-llm-template&type=Date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=vstorm-co/full-stack-fastapi-nextjs-llm-template&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=vstorm-co/full-stack-fastapi-nextjs-llm-template&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=vstorm-co/full-stack-fastapi-nextjs-llm-template&type=Date" />
+ </picture>
+</a>
 
 ---
 
-## Testing
+## 🙏 Inspiration
 
-```bash
-cd backend
+This project is inspired by:
 
-# Run all tests
-pytest
-
-# With coverage
-pytest --cov=app --cov-report=term-missing
-
-# Specific test
-pytest tests/api/test_health.py -v
-```
-
-{%- if cookiecutter.use_frontend %}
-
-### Frontend Tests
-
-```bash
-cd frontend
-
-# Unit tests (Vitest)
-bun test
-
-# E2E tests (Playwright)
-bun test:e2e
-```
-{%- endif %}
+- [full-stack-fastapi-template](https://github.com/fastapi/full-stack-fastapi-template) by @tiangolo
+- [fastapi-template](https://github.com/s3rius/fastapi-template) by @s3rius
+- [FastAPI Best Practices](https://github.com/zhanymkanov/fastapi-best-practices) by @zhanymkanov
+- Django's management commands system
 
 ---
 
-## Deployment
+## 🤝 Contributing
 
-> 📚 For detailed deployment guide, see the [template documentation](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/deployment.md).
-
-### Quick Docker Deploy
-
-```bash
-# Build production images
-docker compose -f docker-compose.yml -f docker-compose.prod.yml build
-
-# Start with production config
-docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
-```
-
-### Environment Checklist
-
-- [ ] Set `ENVIRONMENT=production`
-- [ ] Set `DEBUG=false`
-- [ ] Change `SECRET_KEY` (use `openssl rand -hex 32`)
-{%- if cookiecutter.use_postgresql %}
-- [ ] Configure production database credentials
-{%- endif %}
-{%- if cookiecutter.enable_logfire %}
-- [ ] Set `LOGFIRE_TOKEN` for production
-{%- endif %}
-{%- if cookiecutter.enable_sentry %}
-- [ ] Configure `SENTRY_DSN`
-{%- endif %}
+Contributions are welcome! Please read our [Contributing Guide](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/CONTRIBUTING.md) for details.
 
 ---
 
-## Documentation
+## 📄 License
 
-| Resource | Link |
-|----------|------|
-| Template Repository | [github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template) |
-| Architecture Guide | [docs/architecture.md](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/architecture.md) |
-{%- if cookiecutter.use_frontend %}
-| Frontend Guide | [docs/frontend.md](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/frontend.md) |
-{%- endif %}
-{%- if cookiecutter.enable_ai_agent %}
-| AI Agent Guide | [docs/ai-agent.md](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/ai-agent.md) |
-{%- endif %}
-{%- if cookiecutter.enable_logfire %}
-| Observability Guide | [docs/observability.md](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/observability.md) |
-{%- endif %}
-| Deployment Guide | [docs/deployment.md](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/deployment.md) |
-| Development Guide | [docs/development.md](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/development.md) |
-
----
-
-## License
-
-MIT
+MIT License - see [LICENSE](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/LICENSE) for details.
 
 ---
 
 <p align="center">
-  <sub>Built with <a href="https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template">Full-Stack FastAPI + Next.js Template</a></sub>
+  Made with ❤️ by <a href="https://github.com/vstorm-co">VStorm</a>
 </p>

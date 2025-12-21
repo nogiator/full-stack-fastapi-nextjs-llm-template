@@ -93,18 +93,18 @@ This template gives you all of that out of the box, with **20+ configurable inte
 ## 🎬 Demo
 
 <p align="center">
-  <img src="assets/app_start.gif" alt="FastAPI Fullstack Generator Demo">
+  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/app_start.gif" alt="FastAPI Fullstack Generator Demo">
 </p>
 
 ### Screenshots
 
 <p align="center">
-  <img src="assets/docs_2.png" alt="API Documentation"><br><br>
-  <img src="assets/admin.png" alt="Admin Panel"><br><br>
-  <img src="assets/chat_view_light.png" alt="Chat Interface - Light Mode"><br><br>
-  <img src="assets/chat_view_dark.png" alt="Chat Interface - Dark Mode"><br><br>
-  <img src="assets/login.png" alt="Login Page"><br><br>
-  <img src="assets/register.png" alt="Register Page">
+  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/docs_2.png" alt="API Documentation"><br><br>
+  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/admin.png" alt="Admin Panel"><br><br>
+  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/chat_view_light.png" alt="Chat Interface - Light Mode"><br><br>
+  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/chat_view_dark.png" alt="Chat Interface - Dark Mode"><br><br>
+  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/login.png" alt="Login Page"><br><br>
+  <img src="https://raw.githubusercontent.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/main/assets/register.png" alt="Register Page">
 </p>
 
 ---
@@ -169,7 +169,7 @@ graph LR
 | **Services** | Business logic, orchestration |
 | **Repositories** | Data access, queries |
 
-See [Architecture Documentation](./docs/architecture.md) for details.
+See [Architecture Documentation](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/architecture.md) for details.
 
 ---
 
@@ -289,7 +289,7 @@ async def get_weather(ctx: RunContext[Deps], city: str) -> dict:
         return response.json()
 ```
 
-See [AI Agent Documentation](./docs/ai-agent.md) for more.
+See [AI Agent Documentation](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/ai-agent.md) for more.
 
 ---
 
@@ -496,12 +496,12 @@ fastapi-fullstack new
 
 | Document | Description |
 |----------|-------------|
-| [Architecture](./docs/architecture.md) | Repository + Service pattern, layered design |
-| [Frontend](./docs/frontend.md) | Next.js setup, auth, state management |
-| [AI Agent](./docs/ai-agent.md) | PydanticAI, tools, WebSocket streaming |
-| [Observability](./docs/observability.md) | Logfire integration, tracing, metrics |
-| [Deployment](./docs/deployment.md) | Docker, Kubernetes, production setup |
-| [Development](./docs/development.md) | Local setup, testing, debugging |
+| [Architecture](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/architecture.md) | Repository + Service pattern, layered design |
+| [Frontend](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/frontend.md) | Next.js setup, auth, state management |
+| [AI Agent](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/ai-agent.md) | PydanticAI, tools, WebSocket streaming |
+| [Observability](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/observability.md) | Logfire integration, tracing, metrics |
+| [Deployment](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/deployment.md) | Docker, Kubernetes, production setup |
+| [Development](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/docs/development.md) | Local setup, testing, debugging |
 
 ---
 
@@ -530,13 +530,13 @@ This project is inspired by:
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read our [Contributing Guide](./CONTRIBUTING.md) for details.
+Contributions are welcome! Please read our [Contributing Guide](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/CONTRIBUTING.md) for details.
 
 ---
 
 ## 📄 License
 
-MIT License - see [LICENSE](./LICENSE) for details.
+MIT License - see [LICENSE](https://github.com/vstorm-co/full-stack-fastapi-nextjs-llm-template/blob/main/LICENSE) for details.
 
 ---
 
