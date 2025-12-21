@@ -1,14 +1,15 @@
 {%- if cookiecutter.use_postgresql or cookiecutter.use_sqlite %}
 """Alembic migration environment."""
+# ruff: noqa: I001 - Imports structured for Jinja2 template conditionals
 
 from logging.config import fileConfig
 
-from sqlalchemy import pool, engine_from_config
-
 from alembic import context
+from sqlalchemy import engine_from_config, pool
 
 from app.core.config import settings
 from app.db.base import Base
+
 # Import all models here to ensure they are registered with Base.metadata
 {%- if cookiecutter.use_jwt %}
 from app.db.models.user import User  # noqa: F401

@@ -1,22 +1,23 @@
 {%- if cookiecutter.use_jwt %}
 """Tests for user routes."""
+# ruff: noqa: I001 - Imports structured for Jinja2 template conditionals
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4
 
 import pytest
-from httpx import AsyncClient, ASGITransport
+from httpx import ASGITransport, AsyncClient
 
-from app.api.deps import get_current_user, get_current_active_superuser, get_user_service
-from app.core.config import settings
-from app.main import app
-{%- if cookiecutter.enable_redis %}
-from app.api.deps import get_redis
-{%- endif %}
+from app.api.deps import get_current_active_superuser, get_current_user, get_user_service
 {%- if cookiecutter.use_database %}
 from app.api.deps import get_db_session
 {%- endif %}
+{%- if cookiecutter.enable_redis %}
+from app.api.deps import get_redis
+{%- endif %}
+from app.core.config import settings
+from app.main import app
 
 
 class MockUser:
@@ -40,8 +41,8 @@ class MockUser:
         self.is_active = is_active
         self.is_superuser = is_superuser
         self.hashed_password = "hashed"
-        self.created_at = datetime.now(timezone.utc)
-        self.updated_at = datetime.now(timezone.utc)
+        self.created_at = datetime.now(UTC)
+        self.updated_at = datetime.now(UTC)
 
 
 @pytest.fixture

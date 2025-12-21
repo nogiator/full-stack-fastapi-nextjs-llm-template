@@ -5,6 +5,7 @@ Provides Kubernetes-compatible health check endpoints:
 - /health/live - Detailed liveness probe
 - /health/ready - Readiness probe with dependency checks
 """
+# ruff: noqa: I001 - Imports structured for Jinja2 template conditionals
 
 from datetime import UTC, datetime
 from typing import Any

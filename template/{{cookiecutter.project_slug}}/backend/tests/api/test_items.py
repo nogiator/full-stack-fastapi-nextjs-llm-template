@@ -4,8 +4,9 @@
 This module demonstrates testing patterns for CRUD endpoints.
 You can use it as a template for testing your own endpoints.
 """
+# ruff: noqa: I001 - Imports structured for Jinja2 template conditionals
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4
 
@@ -34,7 +35,7 @@ class MockItem:
         self.title = title
         self.description = description
         self.is_active = is_active
-        self.created_at = datetime.now(timezone.utc)
+        self.created_at = datetime.now(UTC)
         self.updated_at = None
 
 
@@ -83,10 +84,11 @@ async def client_with_mock_service(
 ) -> AsyncClient:
     """Client with mocked item service."""
     from httpx import ASGITransport
+
+    from app.api.deps import get_item_service
 {%- if cookiecutter.use_database %}
     from app.db.session import get_db_session
 {%- endif %}
-    from app.api.deps import get_item_service
 
     app.dependency_overrides[get_item_service] = lambda db=None: mock_item_service
 {%- if cookiecutter.use_database %}

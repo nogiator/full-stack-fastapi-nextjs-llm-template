@@ -6,6 +6,7 @@ This command is useful for development and testing.
 Uses random data generation - install faker for better data:
     uv add faker --group dev
 """
+# ruff: noqa: I001 - Imports structured for Jinja2 template conditionals
 
 import asyncio
 import random
@@ -14,7 +15,7 @@ import string
 import click
 from sqlalchemy import delete, select
 
-from app.commands import command, error, info, success, warning
+from app.commands import command, info, success, warning
 
 # Try to import Faker for better data generation
 try:

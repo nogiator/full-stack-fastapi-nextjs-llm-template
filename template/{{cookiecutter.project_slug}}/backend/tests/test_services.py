@@ -1,7 +1,13 @@
 {%- if cookiecutter.use_jwt %}
 """Tests for service layer."""
+# ruff: noqa: I001 - Imports structured for Jinja2 template conditionals
+{%- if cookiecutter.use_postgresql or cookiecutter.use_mongodb %}
 
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, patch
+{%- elif cookiecutter.use_sqlite %}
+
+from unittest.mock import MagicMock, patch
+{%- endif %}
 from uuid import uuid4
 
 import pytest

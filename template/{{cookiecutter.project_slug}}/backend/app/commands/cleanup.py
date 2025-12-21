@@ -4,13 +4,14 @@ Cleanup old or stale data from the database.
 
 This command is useful for maintenance tasks.
 """
+# ruff: noqa: I001 - Imports structured for Jinja2 template conditionals
 
 import asyncio
 from datetime import datetime, timedelta
 
 import click
 
-from app.commands import command, error, info, success, warning
+from app.commands import command, info, success, warning
 
 
 @command("cleanup", help="Clean up old data from the database")
@@ -40,7 +41,7 @@ def cleanup(days: int, dry_run: bool, force: bool) -> None:
     from app.db.session import async_session_maker
 
     async def _cleanup():
-        async with async_session_maker() as _session:  # noqa: F841
+        async with async_session_maker() as _session:
             info(f"Cleaning up records older than {cutoff_date}...")
 
             # Add your cleanup logic here
@@ -58,7 +59,7 @@ def cleanup(days: int, dry_run: bool, force: bool) -> None:
 {%- elif cookiecutter.use_sqlite %}
     from app.db.session import SessionLocal
 
-    with SessionLocal() as _session:  # noqa: F841
+    with SessionLocal() as _session:
         info(f"Cleaning up records older than {cutoff_date}...")
 
         # Add your cleanup logic here

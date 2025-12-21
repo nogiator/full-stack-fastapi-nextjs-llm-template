@@ -1,9 +1,10 @@
 {%- if cookiecutter.use_jwt %}
 """User management routes."""
+# ruff: noqa: I001 - Imports structured for Jinja2 template conditionals
 
 from typing import Annotated
-
 {%- if cookiecutter.use_postgresql %}
+
 from uuid import UUID
 {%- endif %}
 
@@ -14,13 +15,13 @@ from fastapi_pagination.ext.sqlalchemy import paginate
 from sqlalchemy import select
 {%- endif %}
 
-from app.db.models.user import User, UserRole
 from app.api.deps import (
     DBSession,
     RoleChecker,
     UserSvc,
     get_current_user,
 )
+from app.db.models.user import User, UserRole
 from app.schemas.user import UserRead, UserUpdate
 
 router = APIRouter()

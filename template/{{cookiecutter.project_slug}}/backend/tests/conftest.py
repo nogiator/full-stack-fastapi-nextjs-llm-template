@@ -7,8 +7,12 @@ See: https://anyio.readthedocs.io/en/stable/testing.html
 # ruff: noqa: I001 - Imports structured for Jinja2 template conditionals
 
 from collections.abc import AsyncGenerator
-{%- if cookiecutter.enable_redis or cookiecutter.use_database %}
+{%- if cookiecutter.enable_redis %}
 from unittest.mock import AsyncMock, MagicMock
+{%- elif cookiecutter.use_postgresql or cookiecutter.use_mongodb %}
+from unittest.mock import AsyncMock
+{%- elif cookiecutter.use_sqlite %}
+from unittest.mock import MagicMock
 {%- endif %}
 
 import pytest

@@ -1,4 +1,5 @@
 """Application configuration using Pydantic BaseSettings."""
+# ruff: noqa: I001 - Imports structured for Jinja2 template conditionals
 
 from pathlib import Path
 from typing import Literal

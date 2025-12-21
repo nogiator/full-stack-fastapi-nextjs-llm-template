@@ -1,4 +1,5 @@
 """Exception handler tests."""
+# ruff: noqa: I001, E402 - Imports structured for Jinja2 template conditionals
 
 import pytest
 from httpx import AsyncClient
@@ -16,17 +17,17 @@ async def test_not_found_error_format(client: AsyncClient):
 
 {%- if cookiecutter.use_jwt %}
 
-from unittest.mock import AsyncMock, MagicMock  # noqa: E402
+from unittest.mock import AsyncMock, MagicMock
 
-from httpx import ASGITransport  # noqa: E402
+from httpx import ASGITransport
 
-from app.main import app  # noqa: E402
 {%- if cookiecutter.enable_redis %}
-from app.api.deps import get_redis  # noqa: E402
+from app.api.deps import get_redis
 {%- endif %}
 {%- if cookiecutter.use_database %}
-from app.api.deps import get_db_session  # noqa: E402
+from app.api.deps import get_db_session
 {%- endif %}
+from app.main import app
 
 
 @pytest.mark.anyio

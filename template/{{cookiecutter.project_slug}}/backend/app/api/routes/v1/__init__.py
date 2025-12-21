@@ -1,4 +1,5 @@
 """API v1 router aggregation."""
+# ruff: noqa: I001 - Imports structured for Jinja2 template conditionals
 
 from fastapi import APIRouter
 

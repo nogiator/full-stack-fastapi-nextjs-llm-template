@@ -3,7 +3,9 @@
 
 import uuid
 from enum import Enum
+{%- if cookiecutter.enable_session_management %}
 from typing import TYPE_CHECKING
+{%- endif %}
 
 from sqlalchemy import Boolean, String
 from sqlalchemy.dialects.postgresql import UUID
@@ -79,7 +81,9 @@ class User(Base, TimestampMixin):
 
 import uuid
 from enum import Enum
+{%- if cookiecutter.enable_session_management %}
 from typing import TYPE_CHECKING
+{%- endif %}
 
 from sqlalchemy import Boolean, String
 from sqlalchemy.orm import Mapped, mapped_column{% if cookiecutter.enable_session_management %}, relationship{% endif %}

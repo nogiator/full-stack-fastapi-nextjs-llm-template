@@ -2,6 +2,7 @@
 
 Dependency injection factories for services, repositories, and authentication.
 """
+# ruff: noqa: I001, E402 - Imports structured for Jinja2 template conditionals
 {%- if cookiecutter.use_database or cookiecutter.use_jwt or cookiecutter.use_api_key or cookiecutter.enable_redis %}
 
 from typing import Annotated
