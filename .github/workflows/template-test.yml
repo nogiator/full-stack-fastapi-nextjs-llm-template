@@ -199,3 +199,51 @@ jobs:
           REDIS_PORT: 6379
         run: |
           uv run pytest
+
+  generate-frontend:
+    name: Generate & Test Frontend Project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: "latest"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install generator
+        run: uv sync
+
+      - name: Generate project with frontend
+        run: |
+          mkdir -p /tmp/projects
+          uv run fastapi-gen create test_frontend \
+            --frontend nextjs \
+            --minimal \
+            -o /tmp/projects
+
+      - name: Install frontend dependencies
+        working-directory: /tmp/projects/test_frontend/frontend
+        run: bun install
+
+      - name: Run frontend formatting check
+        working-directory: /tmp/projects/test_frontend/frontend
+        run: bun run format:check
+
+      - name: Run frontend type check
+        working-directory: /tmp/projects/test_frontend/frontend
+        run: bun run type-check
+
+      - name: Run frontend unit tests
+        working-directory: /tmp/projects/test_frontend/frontend
+        run: bun run test:run

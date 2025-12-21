@@ -162,7 +162,9 @@ def create(
                 ci_type=CIType.NONE,
                 generate_env=not no_env,
                 include_example_crud=False,
+                frontend=FrontendType(frontend),
                 backend_port=backend_port,
+                frontend_port=frontend_port,
             )
         else:
             config = ProjectConfig(

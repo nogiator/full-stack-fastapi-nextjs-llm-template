@@ -69,4 +69,43 @@ if os.path.exists(backend_dir):
     else:
         print("Warning: ruff not found. Run 'ruff format .' in backend/ to format code.")
 
+# Format frontend with prettier if it exists
+frontend_dir = os.path.join(os.getcwd(), "frontend")
+if use_frontend and os.path.exists(frontend_dir):
+    # Try to find bun or npx for running prettier
+    bun_cmd = shutil.which("bun")
+    npx_cmd = shutil.which("npx")
+
+    if bun_cmd:
+        print("Installing frontend dependencies and formatting with Prettier...")
+        # Install dependencies first (prettier is a devDependency)
+        result = subprocess.run(
+            [bun_cmd, "install"],
+            cwd=frontend_dir,
+            capture_output=True,
+            check=False,
+        )
+        if result.returncode == 0:
+            # Format with prettier
+            subprocess.run(
+                [bun_cmd, "run", "format"],
+                cwd=frontend_dir,
+                capture_output=True,
+                check=False,
+            )
+            print("Frontend formatting complete.")
+        else:
+            print("Warning: Failed to install frontend dependencies.")
+    elif npx_cmd:
+        print("Formatting frontend with Prettier...")
+        subprocess.run(
+            [npx_cmd, "prettier", "--write", "."],
+            cwd=frontend_dir,
+            capture_output=True,
+            check=False,
+        )
+        print("Frontend formatting complete.")
+    else:
+        print("Warning: bun/npx not found. Run 'bun run format' in frontend/ to format code.")
+
 print("Project generated successfully!")
