@@ -106,6 +106,14 @@ class RateLimitStorageType(str, Enum):
     REDIS = "redis"
 
 
+class ReverseProxyType(str, Enum):
+    """Reverse proxy configuration options."""
+
+    TRAEFIK_INCLUDED = "traefik_included"  # Include Traefik service + labels
+    TRAEFIK_EXTERNAL = "traefik_external"  # External Traefik, include labels only
+    NONE = "none"  # No reverse proxy, expose ports directly
+
+
 class LogfireFeatures(BaseModel):
     """Logfire instrumentation features."""
 
@@ -179,6 +187,7 @@ class ProjectConfig(BaseModel):
     enable_precommit: bool = True
     enable_makefile: bool = True
     enable_docker: bool = True
+    reverse_proxy: ReverseProxyType = ReverseProxyType.TRAEFIK_INCLUDED
     ci_type: CIType = CIType.GITHUB
     enable_kubernetes: bool = False
     generate_env: bool = True
@@ -325,6 +334,11 @@ class ProjectConfig(BaseModel):
             "enable_precommit": self.enable_precommit,
             "enable_makefile": self.enable_makefile,
             "enable_docker": self.enable_docker,
+            # Reverse proxy
+            "reverse_proxy": self.reverse_proxy.value,
+            "include_traefik_service": self.reverse_proxy == ReverseProxyType.TRAEFIK_INCLUDED,
+            "include_traefik_labels": self.reverse_proxy
+            in (ReverseProxyType.TRAEFIK_INCLUDED, ReverseProxyType.TRAEFIK_EXTERNAL),
             "ci_type": self.ci_type.value,
             "use_github_actions": self.ci_type == CIType.GITHUB,
             "use_gitlab_ci": self.ci_type == CIType.GITLAB,

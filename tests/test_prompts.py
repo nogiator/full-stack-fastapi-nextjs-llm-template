@@ -17,6 +17,7 @@ from fastapi_gen.config import (
     LogfireFeatures,
     OAuthProvider,
     RateLimitStorageType,
+    ReverseProxyType,
     WebSocketAuthType,
 )
 from fastapi_gen.prompts import (
@@ -842,6 +843,7 @@ class TestRunInteractivePrompts:
     @patch("fastapi_gen.prompts.prompt_ports")
     @patch("fastapi_gen.prompts.prompt_python_version")
     @patch("fastapi_gen.prompts.prompt_frontend")
+    @patch("fastapi_gen.prompts.prompt_reverse_proxy")
     @patch("fastapi_gen.prompts.prompt_dev_tools")
     @patch("fastapi_gen.prompts.prompt_integrations")
     @patch("fastapi_gen.prompts.prompt_background_tasks")
@@ -862,6 +864,7 @@ class TestRunInteractivePrompts:
         mock_background_tasks: MagicMock,
         mock_integrations: MagicMock,
         mock_dev_tools: MagicMock,
+        mock_reverse_proxy: MagicMock,
         mock_frontend: MagicMock,
         mock_python_version: MagicMock,
         mock_ports: MagicMock,
@@ -900,6 +903,7 @@ class TestRunInteractivePrompts:
             "enable_kubernetes": False,
             "ci_type": CIType.GITHUB,
         }
+        mock_reverse_proxy.return_value = ReverseProxyType.TRAEFIK_INCLUDED
         mock_frontend.return_value = FrontendType.NONE
         mock_python_version.return_value = "3.12"
         mock_ports.return_value = {"backend_port": 8000}
@@ -923,6 +927,7 @@ class TestRunInteractivePrompts:
     @patch("fastapi_gen.prompts.prompt_ports")
     @patch("fastapi_gen.prompts.prompt_python_version")
     @patch("fastapi_gen.prompts.prompt_frontend")
+    @patch("fastapi_gen.prompts.prompt_reverse_proxy")
     @patch("fastapi_gen.prompts.prompt_dev_tools")
     @patch("fastapi_gen.prompts.prompt_integrations")
     @patch("fastapi_gen.prompts.prompt_background_tasks")
@@ -943,6 +948,7 @@ class TestRunInteractivePrompts:
         mock_background_tasks: MagicMock,
         mock_integrations: MagicMock,
         mock_dev_tools: MagicMock,
+        mock_reverse_proxy: MagicMock,
         mock_frontend: MagicMock,
         mock_python_version: MagicMock,
         mock_ports: MagicMock,
@@ -981,6 +987,7 @@ class TestRunInteractivePrompts:
             "enable_kubernetes": False,
             "ci_type": CIType.GITHUB,
         }
+        mock_reverse_proxy.return_value = ReverseProxyType.TRAEFIK_INCLUDED
         mock_frontend.return_value = FrontendType.NONE
         mock_python_version.return_value = "3.12"
         mock_ports.return_value = {"backend_port": 8000}
@@ -1003,6 +1010,7 @@ class TestRunInteractivePrompts:
     @patch("fastapi_gen.prompts.prompt_ports")
     @patch("fastapi_gen.prompts.prompt_python_version")
     @patch("fastapi_gen.prompts.prompt_frontend")
+    @patch("fastapi_gen.prompts.prompt_reverse_proxy")
     @patch("fastapi_gen.prompts.prompt_dev_tools")
     @patch("fastapi_gen.prompts.prompt_integrations")
     @patch("fastapi_gen.prompts.prompt_background_tasks")
@@ -1023,6 +1031,7 @@ class TestRunInteractivePrompts:
         mock_background_tasks: MagicMock,
         mock_integrations: MagicMock,
         mock_dev_tools: MagicMock,
+        mock_reverse_proxy: MagicMock,
         mock_frontend: MagicMock,
         mock_python_version: MagicMock,
         mock_ports: MagicMock,
@@ -1065,6 +1074,7 @@ class TestRunInteractivePrompts:
             "enable_kubernetes": False,
             "ci_type": CIType.GITHUB,
         }
+        mock_reverse_proxy.return_value = ReverseProxyType.TRAEFIK_INCLUDED
         mock_frontend.return_value = FrontendType.NONE
         mock_python_version.return_value = "3.12"
         mock_ports.return_value = {"backend_port": 8000}
@@ -1091,6 +1101,7 @@ class TestRunInteractivePrompts:
     @patch("fastapi_gen.prompts.prompt_ports")
     @patch("fastapi_gen.prompts.prompt_python_version")
     @patch("fastapi_gen.prompts.prompt_frontend")
+    @patch("fastapi_gen.prompts.prompt_reverse_proxy")
     @patch("fastapi_gen.prompts.prompt_dev_tools")
     @patch("fastapi_gen.prompts.prompt_integrations")
     @patch("fastapi_gen.prompts.prompt_background_tasks")
@@ -1111,6 +1122,7 @@ class TestRunInteractivePrompts:
         mock_background_tasks: MagicMock,
         mock_integrations: MagicMock,
         mock_dev_tools: MagicMock,
+        mock_reverse_proxy: MagicMock,
         mock_frontend: MagicMock,
         mock_python_version: MagicMock,
         mock_ports: MagicMock,
@@ -1151,6 +1163,7 @@ class TestRunInteractivePrompts:
             "enable_kubernetes": False,
             "ci_type": CIType.GITHUB,
         }
+        mock_reverse_proxy.return_value = ReverseProxyType.TRAEFIK_INCLUDED
         mock_frontend.return_value = FrontendType.NONE
         mock_python_version.return_value = "3.12"
         mock_ports.return_value = {"backend_port": 8000}
@@ -1174,6 +1187,7 @@ class TestRunInteractivePrompts:
     @patch("fastapi_gen.prompts.prompt_ports")
     @patch("fastapi_gen.prompts.prompt_python_version")
     @patch("fastapi_gen.prompts.prompt_frontend")
+    @patch("fastapi_gen.prompts.prompt_reverse_proxy")
     @patch("fastapi_gen.prompts.prompt_dev_tools")
     @patch("fastapi_gen.prompts.prompt_integrations")
     @patch("fastapi_gen.prompts.prompt_background_tasks")
@@ -1194,6 +1208,7 @@ class TestRunInteractivePrompts:
         mock_background_tasks: MagicMock,
         mock_integrations: MagicMock,
         mock_dev_tools: MagicMock,
+        mock_reverse_proxy: MagicMock,
         mock_frontend: MagicMock,
         mock_python_version: MagicMock,
         mock_ports: MagicMock,
@@ -1234,6 +1249,7 @@ class TestRunInteractivePrompts:
             "enable_kubernetes": False,
             "ci_type": CIType.GITHUB,
         }
+        mock_reverse_proxy.return_value = ReverseProxyType.TRAEFIK_INCLUDED
         mock_frontend.return_value = FrontendType.NONE
         mock_python_version.return_value = "3.12"
         mock_ports.return_value = {"backend_port": 8000}
@@ -1257,6 +1273,7 @@ class TestRunInteractivePrompts:
     @patch("fastapi_gen.prompts.prompt_ports")
     @patch("fastapi_gen.prompts.prompt_python_version")
     @patch("fastapi_gen.prompts.prompt_frontend")
+    @patch("fastapi_gen.prompts.prompt_reverse_proxy")
     @patch("fastapi_gen.prompts.prompt_dev_tools")
     @patch("fastapi_gen.prompts.prompt_integrations")
     @patch("fastapi_gen.prompts.prompt_background_tasks")
@@ -1277,6 +1294,7 @@ class TestRunInteractivePrompts:
         mock_background_tasks: MagicMock,
         mock_integrations: MagicMock,
         mock_dev_tools: MagicMock,
+        mock_reverse_proxy: MagicMock,
         mock_frontend: MagicMock,
         mock_python_version: MagicMock,
         mock_ports: MagicMock,
@@ -1317,6 +1335,7 @@ class TestRunInteractivePrompts:
             "enable_kubernetes": False,
             "ci_type": CIType.GITHUB,
         }
+        mock_reverse_proxy.return_value = ReverseProxyType.TRAEFIK_INCLUDED
         mock_frontend.return_value = FrontendType.NONE
         mock_python_version.return_value = "3.12"
         mock_ports.return_value = {"backend_port": 8000}
@@ -1337,6 +1356,7 @@ class TestRunInteractivePrompts:
     @patch("fastapi_gen.prompts.prompt_ports")
     @patch("fastapi_gen.prompts.prompt_python_version")
     @patch("fastapi_gen.prompts.prompt_frontend")
+    @patch("fastapi_gen.prompts.prompt_reverse_proxy")
     @patch("fastapi_gen.prompts.prompt_dev_tools")
     @patch("fastapi_gen.prompts.prompt_integrations")
     @patch("fastapi_gen.prompts.prompt_background_tasks")
@@ -1357,6 +1377,7 @@ class TestRunInteractivePrompts:
         mock_background_tasks: MagicMock,
         mock_integrations: MagicMock,
         mock_dev_tools: MagicMock,
+        mock_reverse_proxy: MagicMock,
         mock_frontend: MagicMock,
         mock_python_version: MagicMock,
         mock_ports: MagicMock,
@@ -1396,6 +1417,7 @@ class TestRunInteractivePrompts:
             "enable_kubernetes": False,
             "ci_type": CIType.GITHUB,
         }
+        mock_reverse_proxy.return_value = ReverseProxyType.TRAEFIK_INCLUDED
         mock_frontend.return_value = FrontendType.NEXTJS
         mock_python_version.return_value = "3.12"
         mock_ports.return_value = {"backend_port": 8000, "frontend_port": 3000}
@@ -1418,6 +1440,7 @@ class TestRunInteractivePrompts:
     @patch("fastapi_gen.prompts.prompt_ports")
     @patch("fastapi_gen.prompts.prompt_python_version")
     @patch("fastapi_gen.prompts.prompt_frontend")
+    @patch("fastapi_gen.prompts.prompt_reverse_proxy")
     @patch("fastapi_gen.prompts.prompt_dev_tools")
     @patch("fastapi_gen.prompts.prompt_integrations")
     @patch("fastapi_gen.prompts.prompt_background_tasks")
@@ -1438,6 +1461,7 @@ class TestRunInteractivePrompts:
         mock_background_tasks: MagicMock,
         mock_integrations: MagicMock,
         mock_dev_tools: MagicMock,
+        mock_reverse_proxy: MagicMock,
         mock_frontend: MagicMock,
         mock_python_version: MagicMock,
         mock_ports: MagicMock,
@@ -1477,6 +1501,7 @@ class TestRunInteractivePrompts:
             "enable_kubernetes": False,
             "ci_type": CIType.GITHUB,
         }
+        mock_reverse_proxy.return_value = ReverseProxyType.TRAEFIK_INCLUDED
         mock_frontend.return_value = FrontendType.NONE
         mock_python_version.return_value = "3.12"
         mock_ports.return_value = {"backend_port": 8000}
@@ -1501,6 +1526,7 @@ class TestRunInteractivePrompts:
     @patch("fastapi_gen.prompts.prompt_ports")
     @patch("fastapi_gen.prompts.prompt_python_version")
     @patch("fastapi_gen.prompts.prompt_frontend")
+    @patch("fastapi_gen.prompts.prompt_reverse_proxy")
     @patch("fastapi_gen.prompts.prompt_dev_tools")
     @patch("fastapi_gen.prompts.prompt_integrations")
     @patch("fastapi_gen.prompts.prompt_background_tasks")
@@ -1521,6 +1547,7 @@ class TestRunInteractivePrompts:
         mock_background_tasks: MagicMock,
         mock_integrations: MagicMock,
         mock_dev_tools: MagicMock,
+        mock_reverse_proxy: MagicMock,
         mock_frontend: MagicMock,
         mock_python_version: MagicMock,
         mock_ports: MagicMock,
@@ -1560,6 +1587,7 @@ class TestRunInteractivePrompts:
             "enable_kubernetes": False,
             "ci_type": CIType.GITHUB,
         }
+        mock_reverse_proxy.return_value = ReverseProxyType.TRAEFIK_INCLUDED
         mock_frontend.return_value = FrontendType.NONE
         mock_python_version.return_value = "3.12"
         mock_ports.return_value = {"backend_port": 8000}

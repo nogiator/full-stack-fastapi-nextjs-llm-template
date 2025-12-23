@@ -21,6 +21,7 @@ from .config import (
     OAuthProvider,
     ProjectConfig,
     RateLimitStorageType,
+    ReverseProxyType,
     WebSocketAuthType,
 )
 
@@ -414,6 +415,36 @@ def prompt_dev_tools() -> dict[str, Any]:
     }
 
 
+def prompt_reverse_proxy() -> ReverseProxyType:
+    """Prompt for reverse proxy configuration."""
+    console.print()
+    console.print("[bold cyan]Reverse Proxy (Production)[/]")
+    console.print()
+
+    choices = [
+        questionary.Choice(
+            "Traefik (included in docker-compose)", value=ReverseProxyType.TRAEFIK_INCLUDED
+        ),
+        questionary.Choice(
+            "External Traefik (shared between projects)", value=ReverseProxyType.TRAEFIK_EXTERNAL
+        ),
+        questionary.Choice(
+            "None (expose ports directly, use own proxy)", value=ReverseProxyType.NONE
+        ),
+    ]
+
+    return cast(
+        ReverseProxyType,
+        _check_cancelled(
+            questionary.select(
+                "Select reverse proxy configuration:",
+                choices=choices,
+                default=choices[0],
+            ).ask()
+        ),
+    )
+
+
 def prompt_frontend() -> FrontendType:
     """Prompt for frontend framework selection."""
     console.print()
@@ -677,6 +708,11 @@ def run_interactive_prompts() -> ProjectConfig:
     # Dev tools
     dev_tools = prompt_dev_tools()
 
+    # Reverse proxy (only if Docker is enabled)
+    reverse_proxy = ReverseProxyType.TRAEFIK_INCLUDED
+    if dev_tools.get("enable_docker"):
+        reverse_proxy = prompt_reverse_proxy()
+
     # Frontend
     frontend = prompt_frontend()
 
@@ -762,6 +798,7 @@ def run_interactive_prompts() -> ProjectConfig:
         rate_limit_storage=rate_limit_storage,
         python_version=python_version,
         ci_type=ci_type,
+        reverse_proxy=reverse_proxy,
         frontend=frontend,
         backend_port=ports["backend_port"],
         frontend_port=ports.get("frontend_port", 3000),

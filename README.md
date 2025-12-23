@@ -50,6 +50,10 @@ This template gives you all of that out of the box, with **20+ configurable inte
 - 🏢 **Enterprise SaaS** - Full auth, admin panel, webhooks, and more
 - 🚀 **Startups** - Ship fast with production-ready infrastructure
 
+### AI-Agent Friendly
+
+Generated projects include **CLAUDE.md** and **AGENTS.md** files optimized for AI coding assistants (Claude Code, Codex, Copilot, Cursor, Zed). Following [progressive disclosure](https://humanlayer.dev/blog/writing-a-good-claude-md) best practices - concise project overview with pointers to detailed docs when needed.
+
 ---
 
 ## ✨ Features

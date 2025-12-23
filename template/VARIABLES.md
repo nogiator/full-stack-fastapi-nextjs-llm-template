@@ -221,6 +221,14 @@ These variables are set automatically by the generator.
 | `use_github_actions` | bool | `true` | GitHub Actions is selected | Computed from `ci_type` |
 | `use_gitlab_ci` | bool | `false` | GitLab CI is selected | Computed from `ci_type` |
 | `enable_kubernetes` | bool | `false` | Include Kubernetes manifests | - |
+| `reverse_proxy` | enum | `"traefik_included"` | Reverse proxy config. Values: `traefik_included`, `traefik_external`, `none` | Requires Docker |
+| `include_traefik_service` | bool | `true` | Include Traefik container in docker-compose | Computed from `reverse_proxy` |
+| `include_traefik_labels` | bool | `true` | Include Traefik labels on services | Computed from `reverse_proxy` |
+
+**Reverse Proxy Options:**
+- `traefik_included`: Full Traefik setup included in docker-compose.prod.yml (default)
+- `traefik_external`: Services have Traefik labels but no Traefik container (for shared Traefik)
+- `none`: No reverse proxy, ports exposed directly (use your own nginx/caddy/HAProxy)
 
 ---
 
